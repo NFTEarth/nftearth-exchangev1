@@ -20,7 +20,7 @@ const ImagesGrid: FC<Props> = ({ sample_images, value }) => {
             // SMALLER IMAGE, HAS SIDE IMAGES
             <img
               src={optimizeImage(sample_images[0], 250)}
-              className="col-span-2 w-full rounded object-cover"
+              className="col-span-2 w-full rounded object-contain max-h-[215px]"
               width="224"
               height="224"
             />
@@ -41,7 +41,7 @@ const ImagesGrid: FC<Props> = ({ sample_images, value }) => {
                   src={optimizeImage(image, 70)}
                   width="70"
                   height="70"
-                  className="w-[70px] rounded"
+                  className="w-[70px] rounded max-h-[70px]"
                 />
               ))}
             </div>
