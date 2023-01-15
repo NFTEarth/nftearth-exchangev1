@@ -98,13 +98,13 @@ const Home: NextPage<Props> = ({ fallback }) => {
             </div>
           </div>
         </div>
-        <div className="mb-9 flex w-full items-center justify-between">
+        <div className="mb-9 flex w-full items-center justify-between mt-[60px]">
           <div className="reservoir-h4 dark:text-white">
             Top Collection
           </div>
         </div>
         <CustomCollectionsGrid collections={fallback.trendingCollections} />
-        <div className="mb-9 flex w-full items-center justify-between">
+        <div className="mb-9 flex w-full items-center justify-between mt-[40px]">
           <div className="reservoir-h4 dark:text-white">
             Trending Collection
           </div>
