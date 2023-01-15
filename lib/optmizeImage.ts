@@ -29,9 +29,9 @@ export function optimizeImage(
   if (url.host === 'lh3.googleusercontent.com') {
     if (imageHref.includes('=s') || imageHref.includes('=w')) {
       let newImage = imageHref.split('=')
-      return `${newImage[0]}=w${width}&h=${width}`
+      return `${newImage[0]}=w${width}`
     }
-    return `${imageHref}=w${width}&h=${width}`
+    return `${imageHref}=w${width}`
   }
   return imageHref
 }

@@ -26,12 +26,7 @@ const ImagesGrid: FC<Props> = ({ sample_images, value }) => {
             />
           ) : (
             // BIG IMAGE, NO SIDE IMAGES
-            <img
-              src={optimizeImage(sample_images[0], 300)}
-              className="col-span-2 w-full rounded object-contain"
-              width="300"
-              height="300"
-            />
+            <div className="h-12 w-12 flex-none rounded-full bg-gradient-to-br from-primary-500 to-primary-900"></div>
           )}
           {sample_images.length > 1 && (
             <div className="flex h-full flex-col gap-1">
