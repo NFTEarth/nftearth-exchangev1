@@ -30,9 +30,9 @@ const ImagesGrid: FC<Props> = ({ sample_images, value }) => {
           )}
           {sample_images.length > 1 && (
             <div className="flex h-full flex-col gap-1">
-              {sample_images.slice(1).map((image) => (
+              {sample_images.slice(1).map((image, i) => (
                 <img
-                  key={image}
+                  key={`${image}-${i}`}
                   src={optimizeImage(image, 70)}
                   width="70"
                   height="70"
