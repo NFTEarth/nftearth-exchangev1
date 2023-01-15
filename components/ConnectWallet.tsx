@@ -31,8 +31,6 @@ const ConnectWallet: FC = () => {
   const wallet = connectors[0]
   const isMounted = useMounted()
 
-  const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID || 1;
-
   if (!isMounted) {
     return null
   }
