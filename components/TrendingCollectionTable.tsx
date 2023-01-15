@@ -190,12 +190,13 @@ const TrendingCollectionTable: FC<Props> = ({ fallback, alternate }) => {
       )}
 
       {alternate && (
-        <a
-          href="/stats"
-          className="btn-primary-outline gap-1 rounded-full border-transparent bg-gray-100 w-[200px] normal-case focus:ring-0 dark:border-neutral-600 dark:bg-neutral-900 dark:ring-primary-900 dark:focus:ring-4"
-        >
-          <strong>See More</strong>
-        </a>
+        <Link href="/stats" legacyBehavior={true}>
+          <a
+            className="btn-primary-outline gap-1 rounded-full border-transparent bg-gray-100 w-[200px] normal-case focus:ring-0 dark:border-neutral-600 dark:bg-neutral-900 dark:ring-primary-900 dark:focus:ring-4"
+          >
+            <strong>See More</strong>
+          </a>
+        </Link>
       )}
     </div>
   )

@@ -8,6 +8,7 @@ import Footer from 'components/Footer'
 import React, { useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import CustomCollectionsGrid from '../components/CustomCollectionsGrid'
+import Link from 'next/link'
 
 // Environment variables
 // For more information about these variables
@@ -86,12 +87,13 @@ const Home: NextPage<Props> = ({ fallback }) => {
       <div className="col-span-full px-6 md:px-16 mb-[50px]">
         <div className="mb-9 flex w-full items-center justify-between">
           <div className="hero-home">
-            <a
-              href="/stats"
-              className="btn-primary-outline gap-1 rounded-full border-transparent bg-gray-100 normal-case focus:ring-0 dark:border-neutral-600 dark:bg-neutral-900 dark:ring-primary-900 dark:focus:ring-4"
-            >
-              <strong>Discover</strong>
-            </a>
+            <Link href="/stats" legacyBehavior={true}>
+              <a
+                className="btn-primary-outline gap-1 rounded-full border-transparent bg-gray-100 normal-case focus:ring-0 dark:border-neutral-600 dark:bg-neutral-900 dark:ring-primary-900 dark:focus:ring-4"
+              >
+                <strong>Discover</strong>
+              </a>
+            </Link>
             <div>
               <h2>Buy & Sell NFTs</h2>
               <p>NFTEarth is the web3 NFT Marketplace for Layer2 community.</p>
