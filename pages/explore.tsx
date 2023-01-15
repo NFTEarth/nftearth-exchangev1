@@ -4,10 +4,12 @@ import { paths } from '@reservoir0x/reservoir-sdk'
 import setParams from 'lib/params'
 import Head from 'next/head'
 import TrendingCollectionTable from 'components/TrendingCollectionTable'
+import SortTrendingCollections from 'components/SortTrendingCollections'
 import Footer from 'components/Footer'
-import React, { useEffect, useRef } from 'react'
+import { useMediaQuery } from '@react-hookz/web'
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import CustomCollectionsGrid from '../components/CustomCollectionsGrid'
+import ExploreTable from '../components/ExploreTable'
 
 // Environment variables
 // For more information about these variables
@@ -52,8 +54,7 @@ const metadata = {
 }
 
 const Home: NextPage<Props> = ({ fallback }) => {
-  const ref1 = useRef<any>(null);
-  const ref2 = useRef<any>(null);
+  const isSmallDevice = useMediaQuery('only screen and (max-width : 600px)')
   const router = useRouter()
 
   const title = META_TITLE && metadata.title(META_TITLE)
@@ -83,33 +84,18 @@ const Home: NextPage<Props> = ({ fallback }) => {
         {description}
         {image}
       </Head>
-      <div className="col-span-full px-6 md:px-16 mb-[50px]">
-        <div className="mb-9 flex w-full items-center justify-between">
-          <div className="hero-home">
-            <a
-              href="/stats"
-              className="btn-primary-outline gap-1 rounded-full border-transparent bg-gray-100 normal-case focus:ring-0 dark:border-neutral-600 dark:bg-neutral-900 dark:ring-primary-900 dark:focus:ring-4"
-            >
-              <strong>Discover</strong>
-            </a>
-            <div>
-              <h2>Buy & Sell NFTs</h2>
-              <p>NFTEarth is the web3 NFT Marketplace for Layer2 community.</p>
-            </div>
-          </div>
-        </div>
+      <header className="col-span-full mb-12 mt-[66px] px-4 md:mt-40 lg:px-0">
+        <h1 className="reservoir-h1 text-center dark:text-white">{tagline}</h1>
+      </header>
+      <div className="col-span-full px-6 md:px-16">
         <div className="mb-9 flex w-full items-center justify-between">
           <div className="reservoir-h4 dark:text-white">
-            Top Collection
+            Trending Collections
           </div>
+          {!isSmallDevice && <SortTrendingCollections />}
         </div>
-        <CustomCollectionsGrid collections={fallback.trendingCollections} />
-        <div className="mb-9 flex w-full items-center justify-between">
-          <div className="reservoir-h4 dark:text-white">
-            Trending Collection
-          </div>
-        </div>
-        <CustomCollectionsGrid collections={fallback.topCollections} />
+        <ExploreTable  mappedAttributes={[]} viewRef={() => {}}/>
+        <TrendingCollectionTable fallback={fallback} />
       </div>
       <Footer />
     </Layout>
@@ -120,8 +106,7 @@ export default Home
 
 export const getStaticProps: GetStaticProps<{
   fallback: {
-    topCollections: paths['/collections/v5']['get']['responses']['200']['schema'],
-    trendingCollections: paths['/collections/v5']['get']['responses']['200']['schema']
+    collections: paths['/collections/v5']['get']['responses']['200']['schema']
   }
 }> = async () => {
   const options: RequestInit | undefined = {}
@@ -135,14 +120,8 @@ export const getStaticProps: GetStaticProps<{
   const url = new URL('/collections/v5', RESERVOIR_API_BASE)
 
   let query: paths['/collections/v5']['get']['parameters']['query'] = {
-    limit: 8,
+    limit: 20,
     sortBy: '1DayVolume',
-    normalizeRoyalties: true,
-  }
-
-  let query2: paths['/collections/v5']['get']['parameters']['query'] = {
-    limit: 8,
-    sortBy: 'allTimeVolume',
     normalizeRoyalties: true,
   }
 
@@ -151,19 +130,14 @@ export const getStaticProps: GetStaticProps<{
   if (COLLECTION_SET_ID) query.collectionsSetId = COLLECTION_SET_ID
 
   const href = setParams(url, query)
-  const href2 = setParams(url, query2)
-
   const res = await fetch(href, options)
-  const res2 = await fetch(href2, options)
 
-  const trendingCollections = (await res.json()) as Props['fallback']['collections']
-  const topCollections = (await res2.json()) as Props['fallback']['collections']
+  const collections = (await res.json()) as Props['fallback']['collections']
 
   return {
     props: {
       fallback: {
-        trendingCollections,
-        topCollections
+        collections,
       },
     },
   }

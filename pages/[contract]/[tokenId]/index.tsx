@@ -110,14 +110,26 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
     }
   )
 
+  const { data: tokensx } = useTokens({
+    tokens: [`${collectionId}:${router.query?.tokenId}`],
+    includeTopBid: true,
+    includeAttributes: true,
+    includeQuantity: true,
+    includeDynamicPricing: true,
+    normalizeRoyalties: true
+  })
+
+  console.log('tokens', tokensx);
+
   useEffect(() => {
-    if (CHAIN_ID && (+CHAIN_ID === 1 || +CHAIN_ID === 5)) {
+    if (CHAIN_ID && (+CHAIN_ID === 1 || +CHAIN_ID === 5 || +CHAIN_ID === 10)) {
       const baseUrl =
-        +CHAIN_ID === 1
+        (+CHAIN_ID === 1 || +CHAIN_ID === 10)
           ? 'https://api.opensea.io'
           : 'https://testnets-api.opensea.io'
+
       fetch(
-        `${baseUrl}/api/v1/asset/${collectionId}/${router.query?.tokenId?.toString()}/offers`
+        `${baseUrl}/v2/orders/optimism/seaport/offers?asset_contract_address=${collectionId}&token_ids=${router.query?.tokenId?.toString()}`
       ).then(async (data) => {
         const response = await data.json()
         fetch(`${PROXY_API_BASE}/seaport/offers`, {

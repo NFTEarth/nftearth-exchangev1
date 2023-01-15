@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import Link from 'next/link'
 import { optimizeImage } from 'lib/optmizeImage'
 import FormatNativeCrypto from 'components/FormatNativeCrypto'
@@ -16,12 +16,13 @@ const FOOTER_ENABLED = process.env.NEXT_PUBLIC_FOOTER_ENABLED == 'true'
 type Props = {
   fallback: {
     collections: paths['/collections/v5']['get']['responses']['200']['schema']
-  }
+  },
+  alternate?: boolean
 }
 
 type Volumes = '1DayVolume' | '7DayVolume' | '30DayVolume'
 
-const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
+const TrendingCollectionTable: FC<Props> = ({ fallback, alternate }) => {
   const isSmallDevice = useMediaQuery('only screen and (max-width : 600px)')
   const router = useRouter()
   const [expanded, setExpanded] = useState<boolean>(false)
@@ -31,8 +32,9 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
     fallback.collections
   )
 
-  const shouldInfiniteLoad =
+  const shouldInfiniteLoad = !alternate && (
     !FOOTER_ENABLED || (FOOTER_ENABLED && expanded && collections.size < 5)
+  )
 
   const { data } = collections
 
@@ -108,7 +110,7 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                   <Link href={tokenHref} legacyBehavior={true}>
                     <a className="flex items-center gap-2">
                       <img
-                        src={optimizeImage(image, 140)}
+                        src={optimizeImage(image || 'https://via.placeholder.com/140', 140)}
                         className="h-[56px] w-[56px] rounded-full object-cover"
                       />
                       <div
@@ -172,11 +174,11 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
         </tbody>
       </table>
 
-      {FOOTER_ENABLED && expanded && collections.isValidating && (
+      {(FOOTER_ENABLED && expanded && collections.isValidating && !alternate) && (
         <CgSpinner className="mx-auto h-6 w-6 animate-spin" />
       )}
 
-      {FOOTER_ENABLED && !expanded && (
+      {(FOOTER_ENABLED && !expanded && !alternate) && (
         <button
           className="btn-primary-outline mx-auto my-3 border border-[#D4D4D4] bg-white text-black dark:border-[#525252] dark:bg-black dark:text-white dark:ring-[#525252] dark:focus:ring-4"
           onClick={() => {
@@ -185,6 +187,15 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
         >
           Load More
         </button>
+      )}
+
+      {alternate && (
+        <a
+          href="/stats"
+          className="btn-primary-outline gap-1 rounded-full border-transparent bg-gray-100 w-[200px] normal-case focus:ring-0 dark:border-neutral-600 dark:bg-neutral-900 dark:ring-primary-900 dark:focus:ring-4"
+        >
+          <strong>See More</strong>
+        </a>
       )}
     </div>
   )

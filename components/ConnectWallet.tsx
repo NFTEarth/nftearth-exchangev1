@@ -30,6 +30,8 @@ const ConnectWallet: FC = () => {
   const wallet = connectors[0]
   const isMounted = useMounted()
 
+  const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID || 1;
+
   if (!isMounted) {
     return null
   }
@@ -117,6 +119,9 @@ type Props = {
 }
 
 export const Balance: FC<Props> = ({ address }) => {
-  const { data: balance } = useBalance({ address: address as Address })
+  const { data: balance } = useBalance({
+      chainId: +CHAIN_ID,
+      address: address as Address
+    })
   return <FormatNativeCrypto amount={balance?.value} />
 }

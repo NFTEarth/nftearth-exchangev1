@@ -37,6 +37,8 @@ const StyledContent = styled(Popover.Content, {
   '&[data-side="bottom"]': { animationName: slideDown },
 })
 
+const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID || 1;
+
 const CartMenu: FC = () => {
   const cartCount = useRecoilValue(getCartCount)
   const cartTotal = useRecoilValue(getCartTotalPrice)
@@ -50,6 +52,7 @@ const CartMenu: FC = () => {
   const { address } = useAccount()
   const reservoirClient = useReservoirClient()
   const { data: balance } = useBalance({
+    chainId: +CHAIN_ID,
     address: address,
     token:
       cartCurrency?.symbol !== 'ETH'

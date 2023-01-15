@@ -71,3 +71,53 @@ model-viewer {
 .markdown-support a {
   text-decoration: underline;
 }
+
+.hero-home {
+  width: 100%;
+  height: 400px;
+  content: ' ';
+  margin-top: 30px;
+  border-radius: 16px;
+  background-image: url("/BannerNFTE.png");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-home a {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.hero-home > div {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 30%;
+}
+
+.hero-home > div > h2 {
+  font-size: 80px;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 4px 3px 0 #387e39;
+  line-height: 1em;
+  margin-bottom: 20px;
+}
+
+.hero-home > div > p {
+  color: #043b14;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+@media (max-width: 700px) {
+  .hero-home > div {
+    width: 50%;
+  }
+
+  .hero-home > div > h2 {
+    font-size: 60px;
+  }
+}

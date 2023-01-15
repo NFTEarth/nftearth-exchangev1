@@ -346,7 +346,7 @@ const UserOffersReceivedTable: FC<Props> = ({
                           />
                         </div>
 
-                        {feeBreakdown?.map((fee, i) => (
+                        {feeBreakdown?.map((fee: any, i: number) => (
                           <div
                             key={i}
                             className="flex justify-between gap-2 text-xs text-neutral-400"

@@ -32,6 +32,13 @@ const proxy = async (req: NextApiRequest, res: NextApiResponse) => {
   setParams(url, query)
 
   if (endpoint.includes('redirect/')) {
+    if (endpoint.includes('/currency')) {
+      const paths = url.href.split('/');
+      res.redirect(`/icons/currency/${paths[paths.length -3]}.png`);
+      return;
+    }
+
+
     res.redirect(url.href)
     return
   }

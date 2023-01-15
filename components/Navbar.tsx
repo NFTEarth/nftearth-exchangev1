@@ -123,6 +123,11 @@ const Navbar: FC = () => {
   return (
     <nav className="sticky top-0 z-[1000] col-span-full flex items-center justify-between gap-2 border-b border-[#D4D4D4] bg-white px-6 py-4 dark:border-neutral-600 dark:bg-black md:gap-3 md:py-6 md:px-16">
       <NavbarLogo className="z-10 max-w-[300px]" />
+      {(hasCommunityDropdown || showDesktopSearch) && (
+        <div className="flex h-full w-full items-center">
+          {filterComponent && filterComponent}
+        </div>
+      )}
       {showLinks && (
         <div className="z-10 ml-12 mr-12 hidden items-center gap-11 md:flex">
           {externalLinks.map(({ name, url }) => (
@@ -134,11 +139,6 @@ const Navbar: FC = () => {
               {name}
             </a>
           ))}
-        </div>
-      )}
-      {(hasCommunityDropdown || showDesktopSearch) && (
-        <div className="flex h-full w-full items-center">
-          {filterComponent && filterComponent}
         </div>
       )}
       {isMobile ? (
@@ -154,9 +154,9 @@ const Navbar: FC = () => {
               {filterComponent && filterComponent}
             </div>
           )}
+          <ThemeSwitcher />
           <CartMenu />
           <ConnectWallet />
-          <ThemeSwitcher />
         </div>
       )}
     </nav>

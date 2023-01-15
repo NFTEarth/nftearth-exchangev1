@@ -170,8 +170,6 @@ const PriceData: FC<Props> = ({ details, collection, isOwner }) => {
     token?.market?.topBid?.id !== null &&
     token?.market?.topBid?.id !== undefined &&
     isOwner
-      ? true
-      : false
 
   return (
     <div className="col-span-full md:col-span-4 lg:col-span-5 lg:col-start-2">

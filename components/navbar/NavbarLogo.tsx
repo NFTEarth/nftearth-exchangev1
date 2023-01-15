@@ -31,7 +31,7 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
   return (
     <Link href={NAVBAR_LOGO_LINK || '/'} legacyBehavior={true}>
       <a
-        className={`relative inline-flex flex-none items-center gap-1 ${className}`}
+        className={`relative inline-flex flex-none items-center justify-center gap-1 ${className}`}
       >
         <img
           src={logo}
@@ -47,6 +47,13 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
             !variant ? 'hidden md:block' : ''
           } ${mobileVariant ? 'hidden' : ''} ${desktopVariant ? 'block' : ''}`}
         />
+        <span
+          style={{ lineHeight: '36px', fontSize: 20 }}
+          className={`h-9 w-auto md:inline ${
+            !variant ? 'hidden md:inline' : ''
+          } ${mobileVariant ? 'hidden' : ''} ${desktopVariant ? 'inline' : ''}`}>
+          NFTEarth
+        </span>
         {chain?.testnet && (
           <div
             className={`reservoir-tiny inline rounded-[4px] bg-[#EFC45C] p-1 py-[2px]

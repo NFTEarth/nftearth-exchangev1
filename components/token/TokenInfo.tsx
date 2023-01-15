@@ -80,19 +80,7 @@ const TokenInfo: FC<Props> = ({ token }) => {
             className="reservoir-h6 font-headings"
             target="_blank"
             rel="noopener noreferrer"
-            href={`https://looksrare.org/collections/${token?.contract}/${token?.tokenId}`}
-          >
-            <img
-              src="/icons/LooksRare.svg"
-              alt="LooksRare Icon"
-              className="h-6 w-6"
-            />
-          </a>
-          <a
-            className="reservoir-h6 font-headings"
-            target="_blank"
-            rel="noopener noreferrer"
-            href={`https://opensea.io/assets/${token?.contract}/${token?.tokenId}`}
+            href={`https://opensea.io/assets/optimism/${token?.contract}/${token?.tokenId}`}
           >
             <img
               src="/icons/OpenSea.svg"
