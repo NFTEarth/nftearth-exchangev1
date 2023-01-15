@@ -3,9 +3,9 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import { paths } from '@reservoir0x/reservoir-sdk'
 import setParams from 'lib/params'
 import Head from 'next/head'
-import TrendingCollectionTable from 'components/TrendingCollectionTable'
+// import TrendingCollectionTable from 'components/TrendingCollectionTable'
 import Footer from 'components/Footer'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import CustomCollectionsGrid from '../components/CustomCollectionsGrid'
 import Link from 'next/link'
@@ -53,8 +53,6 @@ const metadata = {
 }
 
 const Home: NextPage<Props> = ({ fallback }) => {
-  const ref1 = useRef<any>(null);
-  const ref2 = useRef<any>(null);
   const router = useRouter()
 
   const title = META_TITLE && metadata.title(META_TITLE)
@@ -158,8 +156,8 @@ export const getStaticProps: GetStaticProps<{
   const res = await fetch(href, options)
   const res2 = await fetch(href2, options)
 
-  const trendingCollections = (await res.json()) as Props['fallback']['collections']
-  const topCollections = (await res2.json()) as Props['fallback']['collections']
+  const trendingCollections = (await res.json()) as Props['fallback']['trendingCollections']
+  const topCollections = (await res2.json()) as Props['fallback']['topCollections']
 
   return {
     props: {

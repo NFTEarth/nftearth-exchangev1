@@ -7,15 +7,12 @@ import LoadingCardCollection from './LoadingCardCollection'
 import Masonry from 'react-masonry-css'
 
 type Props = {
-  collections: ReturnType<typeof usePaginatedCollections>
+  collections: any
 }
 
 const CollectionsGrid: FC<Props> = ({ collections }) => {
-  console.log('collections', collections);
-
   const {
-    collections: collectionsData,
-    ref,
+    collections: collectionsData
   } = collections
 
   const mappedCollections = collectionsData
@@ -79,20 +76,6 @@ const CollectionsGrid: FC<Props> = ({ collections }) => {
                 </a>
               </Link>
             ))}
-      {!didReachEnd &&
-        Array(20)
-          .fill(null)
-          .map((_, index) => {
-            if (index === 0) {
-              return (
-                <LoadingCardCollection
-                  viewRef={ref}
-                  key={`loading-card-${index}`}
-                />
-              )
-            }
-            return <LoadingCardCollection key={`loading-card-${index}`} />
-          })}
     </Masonry>
   )
 }
