@@ -252,7 +252,7 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
                 trigger={
                   <button
                     disabled={isInTheWrongNetwork}
-                    className="btn-primary-outline min-w-[222px] whitespace-nowrap border border-[#D4D4D4] bg-white text-black dark:border-[#525252] dark:bg-black dark:text-white dark:ring-[#525252] dark:focus:ring-4"
+                    className="py-3 px-5 text-white flex min-w-[222px] whitespace-nowrap border border-[#D4D4D4] bg-white text-black dark:border-[#525252] dark:bg-black dark:text-white dark:ring-[#525252] dark:focus:ring-4"
                   >
                     {isAttributeModal
                       ? 'Make an Attribute Offer'
@@ -289,7 +289,7 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
             {!isSmallDevice && (
               <div className="">
                 <DropdownMenu.Root>
-                  <DropdownMenu.Trigger className="btn-primary-outline rounded-lg border border-[#D4D4D4] bg-white p-2 dark:border-[#525252] dark:bg-black dark:ring-[#525252] dark:focus:ring-4">
+                  <DropdownMenu.Trigger className="py-3 px-5 text-white flex rounded-lg border border-[#D4D4D4] bg-white p-2 dark:border-[#525252] dark:bg-black dark:ring-[#525252] dark:focus:ring-4">
                     <FiMoreVertical className="h-6 w-6 dark:text-[#D4D4D4]" />
                   </DropdownMenu.Trigger>
                   <DropdownMenu.Content

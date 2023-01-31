@@ -111,7 +111,7 @@ const TokenInfo: FC<Props> = ({ token }) => {
           Metadata Refresh
         </div>
         <button
-          className="btn-primary-outline reservoir-h6 ml-auto flex items-center gap-2 p-2 font-headings text-primary-700 dark:border-neutral-600 dark:text-primary-100 dark:ring-primary-900 dark:focus:ring-4"
+          className="py-3 px-5 text-white flex reservoir-h6 ml-auto flex items-center gap-2 p-2 font-headings text-primary-700 dark:border-neutral-600 dark:text-primary-100 dark:ring-primary-900 dark:focus:ring-4"
           title="Refresh token"
           disabled={refreshLoading}
           onClick={() => refreshToken(`${token?.contract}:${token?.tokenId}`)}

@@ -293,7 +293,7 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
                           </div>
                         </div>
                       </Dialog.Title>
-                      <Dialog.Close className="btn-primary-outline p-1.5 dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4">
+                      <Dialog.Close className="py-3 px-5 text-white flex p-1.5 dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4">
                         <HiX className="h-5 w-5" />
                       </Dialog.Close>
                     </div>

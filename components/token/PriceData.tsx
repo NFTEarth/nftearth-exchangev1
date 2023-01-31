@@ -292,7 +292,7 @@ const PriceData: FC<Props> = ({ details, collection, isOwner }) => {
                   showAcceptOffer ? (
                     <button
                       disabled={isInTheWrongNetwork}
-                      className="btn-primary-outline w-full dark:text-white"
+                      className="py-3 px-5 text-white flex w-full dark:text-white"
                     >
                       Accept Offer
                     </button>
@@ -340,7 +340,7 @@ const PriceData: FC<Props> = ({ details, collection, isOwner }) => {
                   trigger={
                     <button
                       disabled={isInTheWrongNetwork}
-                      className="btn-primary-outline w-full dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4"
+                      className="py-3 px-5 text-white flex w-full dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4"
                     >
                       Make Offer
                     </button>

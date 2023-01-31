@@ -196,7 +196,7 @@ const SellTable: FC<Props> = ({ modal, isOwner, address }) => {
                 />
                 <ListModal
                   trigger={
-                    <button className="btn-primary-outline w-full min-w-[120px] bg-white py-2 text-sm text-black focus:ring-0 dark:border-neutral-600 dark:bg-black dark:text-white dark:ring-primary-900 sm:w-auto">
+                    <button className="py-3 px-5 text-white flex w-full min-w-[120px] bg-white py-2 text-sm text-black focus:ring-0 dark:border-neutral-600 dark:bg-black dark:text-white dark:ring-primary-900 sm:w-auto">
                       List Item
                     </button>
                   }
@@ -422,7 +422,7 @@ const SellTable: FC<Props> = ({ modal, isOwner, address }) => {
                     />
                     <ListModal
                       trigger={
-                        <button className="btn-primary-outline min-w-[120px] bg-white py-2 text-sm text-black dark:border-neutral-600 dark:bg-black dark:text-white dark:ring-primary-900 dark:focus:ring-4">
+                        <button className="py-3 px-5 text-white flex min-w-[120px] bg-white py-2 text-sm text-black dark:border-neutral-600 dark:bg-black dark:text-white dark:ring-primary-900 dark:focus:ring-4">
                           List Item
                         </button>
                       }

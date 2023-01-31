@@ -82,7 +82,7 @@ const RefreshButton: FC<Props> = ({ refreshData, isLoading, setIsLoading }) => {
     <div className="min-w-70 inline-flex hidden items-center font-light lg:flex">
       <button
         onClick={() => handleRefreshData()}
-        className="btn-primary-outline mr-2 rounded-full border-none px-2 hover:border disabled:text-neutral-400"
+        className="py-3 px-5 text-white flex mr-2 rounded-full border-none px-2 hover:border disabled:text-neutral-400"
         disabled={cooldownEnabled}
       >
         <FiRefreshCcw className="h-5 w-5" />

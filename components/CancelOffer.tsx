@@ -158,7 +158,7 @@ const CancelOffer: FC<Props> = ({
           <Dialog.Trigger
             disabled={triggerDisabled}
             onClick={onTriggerClick}
-            className="btn-primary-outline dark:border-neutral-600  dark:text-white dark:ring-primary-900 dark:focus:ring-4"
+            className="py-3 px-5 text-white flex dark:border-neutral-600  dark:text-white dark:ring-primary-900 dark:focus:ring-4"
           >
             {waitingTx ? (
               <CgSpinner className="h-4 w-4 animate-spin" />

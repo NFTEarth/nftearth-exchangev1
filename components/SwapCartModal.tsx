@@ -27,7 +27,7 @@ const SwapCartModal: FC<Props> = ({ open, setOpen, cart }) => {
                     </Dialog.Title>
                     <Dialog.Close
                       onClick={() => setOpen(false)}
-                      className="btn-primary-outline p-1.5 dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4"
+                      className="py-3 px-5 text-white flex p-1.5 dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4"
                     >
                       <HiX className="h-5 w-5" />
                     </Dialog.Close>
@@ -49,7 +49,7 @@ const SwapCartModal: FC<Props> = ({ open, setOpen, cart }) => {
                     </Dialog.Close>
                     <Dialog.Close
                       onClick={() => setOpen(false)}
-                      className="btn-primary-outline w-full dark:border-neutral-600  dark:text-white dark:ring-primary-900 dark:focus:ring-4"
+                      className="py-3 px-5 text-white flex w-full dark:border-neutral-600  dark:text-white dark:ring-primary-900 dark:focus:ring-4"
                     >
                       No
                     </Dialog.Close>

@@ -70,7 +70,7 @@ const MobileTokensFilter: FC<Props> = ({
   return (
     <Dialog.Root onOpenChange={setOpen} open={open} modal={true}>
       <div className="fixed bottom-6 z-10 flex w-screen flex-col items-center md:hidden">
-        <Dialog.Trigger className="btn-primary-outline min-w-[200px] rounded-full bg-white py-3 px-12 text-center shadow-[0px_10px_8px_rgba(0,0,0,0.04)] shadow-[_0px_4px_3px_rgba(0,0,0,0.1)] dark:bg-black">
+        <Dialog.Trigger className="py-3 px-5 text-white flex min-w-[200px] rounded-full bg-white py-3 px-12 text-center shadow-[0px_10px_8px_rgba(0,0,0,0.04)] shadow-[_0px_4px_3px_rgba(0,0,0,0.1)] dark:bg-black">
           <span>Filter</span>
           {filtersEnabled && (
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#F5F5F5] text-sm dark:bg-[#262626]">
@@ -98,14 +98,14 @@ const MobileTokensFilter: FC<Props> = ({
             </div>
             {filtersEnabled && (
               <button
-                className="btn-primary-outline border-none py-1.5 px-[5px] text-sm font-light text-[#7000FF] dark:text-[#E2CCFF]"
+                className="py-3 px-5 text-white flex border-none py-1.5 px-[5px] text-sm font-light text-[#7000FF] dark:text-[#E2CCFF]"
                 onClick={() => clearQuery()}
               >
                 Clear all
               </button>
             )}
           </div>
-          <Dialog.Close className="btn-primary-outline border-none py-1.5 px-[5px] text-sm font-light text-[#7000FF] dark:text-[#E2CCFF]">
+          <Dialog.Close className="py-3 px-5 text-white flex border-none py-1.5 px-[5px] text-sm font-light text-[#7000FF] dark:text-[#E2CCFF]">
             Done
           </Dialog.Close>
         </div>

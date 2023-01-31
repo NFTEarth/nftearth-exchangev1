@@ -192,7 +192,7 @@ const UserOffersTable: FC<Props> = ({ modal, collectionIds }) => {
                   setToast={modal.setToast}
                   mutate={data.mutate}
                   trigger={
-                    <Dialog.Trigger className="btn-primary-outline min-w-[120px] bg-white py-[3px] text-sm text-[#FF3B3B] dark:border-neutral-600 dark:bg-black dark:text-[#FF9A9A] dark:ring-primary-900 dark:focus:ring-4">
+                    <Dialog.Trigger className="py-3 px-5 text-white flex min-w-[120px] bg-white py-[3px] text-sm text-[#FF3B3B] dark:border-neutral-600 dark:bg-black dark:text-[#FF9A9A] dark:ring-primary-900 dark:focus:ring-4">
                       Cancel
                     </Dialog.Trigger>
                   }
@@ -347,7 +347,7 @@ const UserOffersTable: FC<Props> = ({ modal, collectionIds }) => {
                       setToast={modal.setToast}
                       mutate={data.mutate}
                       trigger={
-                        <Dialog.Trigger className="btn-primary-outline min-w-[120px] bg-white py-[3px] text-sm text-[#FF3B3B] dark:border-neutral-600 dark:bg-black dark:text-[#FF9A9A] dark:ring-primary-900 dark:focus:ring-4">
+                        <Dialog.Trigger className="py-3 px-5 text-white flex min-w-[120px] bg-white py-[3px] text-sm text-[#FF3B3B] dark:border-neutral-600 dark:bg-black dark:text-[#FF9A9A] dark:ring-primary-900 dark:focus:ring-4">
                           Cancel
                         </Dialog.Trigger>
                       }

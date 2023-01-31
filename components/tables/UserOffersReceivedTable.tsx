@@ -207,7 +207,7 @@ const UserOffersReceivedTable: FC<Props> = ({
                 </div>
                 <AcceptBidModal
                   trigger={
-                    <button className="btn-primary-outline min-w-[120px] bg-white py-[3px] text-sm text-black dark:border-neutral-600 dark:bg-black dark:text-white dark:ring-primary-900 dark:focus:ring-4">
+                    <button className="py-3 px-5 text-white flex min-w-[120px] bg-white py-[3px] text-sm text-black dark:border-neutral-600 dark:bg-black dark:text-white dark:ring-primary-900 dark:focus:ring-4">
                       Accept
                     </button>
                   }
@@ -445,7 +445,7 @@ const UserOffersReceivedTable: FC<Props> = ({
                     <div className="flex items-center">
                       <AcceptBidModal
                         trigger={
-                          <button className="btn-primary-outline min-w-[120px] bg-white py-[3px] text-sm text-black dark:border-neutral-600 dark:bg-black dark:text-white dark:ring-primary-900 dark:focus:ring-4">
+                          <button className="py-3 px-5 text-white flex min-w-[120px] bg-white py-[3px] text-sm text-black dark:border-neutral-600 dark:bg-black dark:text-white dark:ring-primary-900 dark:focus:ring-4">
                             Accept
                           </button>
                         }
