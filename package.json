@@ -10,8 +10,8 @@
   "dependencies": {
     "@datadog/browser-rum": "^4.2.0",
     "@headlessui/react": "^1.5.0",
-    "@nftearth/reservoir-kit-ui": "^0.8.22",
-    "@nftearth/reservoir-sdk": "^0.3.12",
+    "@nftearth/reservoir-kit-ui": "^0.8.28",
+    "@nftearth/reservoir-sdk": "^0.3.18",
     "@nftearth/sdk": "^0.0.306",
     "@radix-ui/colors": "^0.1.8",
     "@radix-ui/react-accordion": "1.0.0",
