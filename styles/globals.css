@@ -81,9 +81,9 @@ model-viewer {
 }
 
 .main {
-  background-image: url("/NFTEBanner.svg");
+  background-image: url("/NFTEBanner.png");
   background-size: cover;
-  background-position: center 90px;
+  background-position: center 80px;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -122,14 +122,7 @@ model-viewer {
 
 @media (max-width: 700px) {
   .main {
-    background-position: center 60px;
-    background-size: contain;
-  }
-
-  .static-info {
-    top: auto;
-    left: auto;
-    right: 10px;
-    bottom: 10px;
+    background-position: center -100px;
+    background-size: cover;
   }
 }
