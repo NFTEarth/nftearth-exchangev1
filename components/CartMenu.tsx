@@ -128,7 +128,7 @@ const CartMenu: FC = () => {
       <Popover.Trigger>
         <div className="relative z-10 grid h-8 w-8 items-center justify-center rounded-full">
           {cartCount > 0 && (
-            <div className="reservoir-subtitle absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary-700 text-white">
+            <div className="reservoir-subtitle absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary-700">
               {cartCount}
             </div>
           )}
@@ -142,7 +142,7 @@ const CartMenu: FC = () => {
         <div className="mb-4 flex justify-between">
           <div className="flex items-center">
             <div className="reservoir-h6 mr-3">My Cart</div>
-            <div className="reservoir-subtitle flex h-5 w-5 items-center justify-center rounded-full bg-primary-700 text-white">
+            <div className="reservoir-subtitle flex h-5 w-5 items-center justify-center rounded-full bg-primary-700">
               {cartCount}
             </div>
           </div>
@@ -171,10 +171,10 @@ const CartMenu: FC = () => {
                     <img src={image || collection?.image} alt="" />
                   </div>
                   <div>
-                    <div className="reservoir-subtitle">
+                    <div>
                       {name || `#${tokenId}`}
                     </div>
-                    <div className="reservoir-label-s">{collection?.name}</div>
+                    <div>{collection?.name}</div>
                     <div className="reservoir-h6">
                       <FormatCrypto
                         amount={price?.amount?.decimal}
@@ -227,7 +227,7 @@ const CartMenu: FC = () => {
             waitingTx ||
             Boolean(balance?.formatted && +balance.formatted < cartTotal)
           }
-          className="btn-primary-fill w-full"
+          className="btn-primary-fill text-black w-full"
         >
           {waitingTx ? 'Waiting' : 'Purchase'}
         </button>

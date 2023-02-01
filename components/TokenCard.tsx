@@ -94,7 +94,7 @@ const TokenCard: FC<Props> = ({
     >
       {isInCart ? (
         <div className="absolute top-4 right-4 z-10 flex h-[34px] w-[34px] animate-slide-down items-center justify-center overflow-hidden rounded-full bg-primary-700">
-          <FaShoppingCart className="h-[18px] w-[18px] text-white" />
+          <FaShoppingCart className="h-[18px] w-[18px] text-black" />
         </div>
       ) : null}
 
@@ -259,7 +259,7 @@ const TokenCard: FC<Props> = ({
                 mutate={mutate}
                 signer={signer}
                 isInTheWrongNetwork={isInTheWrongNetwork}
-                buttonClassName="btn-primary-fill reservoir-subtitle flex h-[40px] items-center justify-center whitespace-nowrap rounded-none text-white focus:ring-0"
+                buttonClassName="btn-primary-fill reservoir-subtitle flex h-[40px] items-center justify-center whitespace-nowrap rounded-none focus:ring-0"
               />
               {isInCart && (
                 <button
