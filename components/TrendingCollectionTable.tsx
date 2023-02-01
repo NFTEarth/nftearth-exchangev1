@@ -10,6 +10,7 @@ import { PercentageChange } from './hero/HeroStats'
 import { useMediaQuery } from '@react-hookz/web'
 import { useState } from 'react'
 import { CgSpinner } from 'react-icons/cg'
+import { BsPatchCheckFill } from 'react-icons/bs'
 
 const FOOTER_ENABLED = process.env.NEXT_PUBLIC_FOOTER_ENABLED == 'true'
 
@@ -72,6 +73,7 @@ const TrendingCollectionTable: FC<Props> = ({ fallback, alternate }) => {
               tokenHref,
               image,
               name,
+              verified,
               days1,
               days30,
               days7,
@@ -119,6 +121,9 @@ const TrendingCollectionTable: FC<Props> = ({ fallback, alternate }) => {
                         }`}
                       >
                         {name}
+                        {verified && (
+                          <BsPatchCheckFill className="h-4 w-4 ml-2 text-primary-700 inline" />
+                        )}
                       </div>
                     </a>
                   </Link>
@@ -215,6 +220,7 @@ function processCollection(
     contract: collection?.primaryContract,
     id: collection?.slug || collection?.id,
     image: collection?.image,
+    verified: collection?.openseaVerificationStatus,
     name: collection?.name,
     days1: collection?.volume?.['1day'],
     days7: collection?.volume?.['7day'],
