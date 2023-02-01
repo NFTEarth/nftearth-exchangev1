@@ -110,60 +110,36 @@ export const getStaticProps: GetStaticProps<{
     }
   }
 
-  const collectionIds = [
-    "0x8dbc32a6a29c1398184256a83553d038ae74db62",
-    "0x0deaAc29d8A3d4EbBAAa3eCd3cC97C9deF00f720",
-    "0x9B9F542456ad12796cCB8EB6644f29E3314e68e1",
-    "0x66Deb6cC4d65dc9CB02875DC5E8751d71Fa5D50E",
-    "0x9A7657d1593032C75d70950707870c3cC7ca45DC",
-    "0x5c9D55b78FEBCC2061715BA4f57EcF8EA2711F2c",
-    "0x8E56343adAFA62DaC9C9A8ac8c742851B0fb8b03",
-    "0xfa14e1157f35e1dad95dc3f822a9d18c40e360e2",
-    "0xA95579592078783B409803Ddc75Bb402C217A924",
-    "0x00e3aA03e47c32397a94509E50B0558988C0D04E",
-    "0x1e04C33cD5A015e1ced0E3Ecd8BDc42902512124",
-    "0x5da95bBdA95Ad9c715195E98a974B2425337c468",
-    "0x4d40396b4Eb19Be0C1cE1B9544608068bDF6b0fC",
-    "0x81b30ff521D1fEB67EDE32db726D95714eb00637",
-    "0x52782699900DF91B58eCD618e77847C5774dCD2e"
-  ]
-
-  const topCollections = await Promise.all(
-    collectionIds.map(id => {
-
-      const url = new URL(`/api/v0/nfts/collections/optimism/${id}`, SIMPLEHASH_API_BASE)
-      return fetch(url.href, {
-        // @ts-ignore
-        headers: {
-          'X-API-KEY': SIMPLEHASH_API_KEY
-        }
-      }).then(res => res.json())
-    }));
+  const collectionsSetId = "f6eff166c8536189c31b52c20ce2d425871e6a57f7f5bc7ac7b5d8d362ba9633";
 
   const url = new URL('/collections/v5', RESERVOIR_API_BASE)
 
   let query: paths['/collections/v5']['get']['parameters']['query'] = {
+    sortBy: '1DayVolume',
+    collectionsSetId,
+    normalizeRoyalties: true,
+  }
+
+  const url2 = new URL('/collections/v5', RESERVOIR_API_BASE)
+
+  let query2: paths['/collections/v5']['get']['parameters']['query'] = {
     limit: 20,
     sortBy: '1DayVolume',
     normalizeRoyalties: true,
   }
 
-  if (COLLECTION && !COMMUNITY) query.contract = [COLLECTION]
-  if (COMMUNITY) query.community = COMMUNITY
-  if (COLLECTION_SET_ID) query.collectionsSetId = COLLECTION_SET_ID
-
   const href = setParams(url, query)
+  const href2 = setParams(url2, query2)
   const res = await fetch(href, options)
+  const res2 = await fetch(href2, options)
 
-  const collections = (await res.json()) as Props['fallback']['collections']
+  const topCollections = (await res.json()) as Props['fallback']['topCollections']
+  const collections = (await res2.json()) as Props['fallback']['collections']
 
   return {
     props: {
       fallback: {
-        topCollections: topCollections.map((t, i) => ({
-          ...t.collections?.[0],
-          id: collectionIds[i].toLowerCase()
-        })),
+        topCollections,
         collections,
       },
     },

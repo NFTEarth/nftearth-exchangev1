@@ -290,7 +290,7 @@ export const getStaticProps: GetStaticProps<{
 
   let collectionQuery: paths['/collections/v5']['get']['parameters']['query'] =
     {
-      id,
+      ...(/^0x/.test(id || '') ? { id } : { slug: id}),
       includeTopBid: true,
       normalizeRoyalties: true,
     }
@@ -301,12 +301,13 @@ export const getStaticProps: GetStaticProps<{
 
   const collection =
     (await collectionRes.json()) as Props['fallback']['collection']
+  const newId = collection?.collections?.[0]?.id;
 
   // TOKENS
   const tokensUrl = new URL(`${RESERVOIR_API_BASE}/tokens/v5`)
 
   let tokensQuery: paths['/tokens/v5']['get']['parameters']['query'] = {
-    collection: id,
+    collection: newId,
     sortBy: 'floorAskPrice',
     includeTopBid: false,
     limit: 20,
@@ -322,7 +323,7 @@ export const getStaticProps: GetStaticProps<{
 
   // ATTRIBUTES
   const attributesUrl = new URL(
-    `${RESERVOIR_API_BASE}/collections/${id}/attributes/all/v2`
+    `${RESERVOIR_API_BASE}/collections/${newId}/attributes/all/v2`
   )
 
   const attributesRes = await fetch(attributesUrl.href, options)
@@ -331,7 +332,7 @@ export const getStaticProps: GetStaticProps<{
     (await attributesRes.json()) as Props['fallback']['attributes']
 
   return {
-    props: { fallback: { collection, tokens, attributes }, id },
+    props: { fallback: { collection, tokens, attributes }, id: newId },
     revalidate: 20,
   }
 }

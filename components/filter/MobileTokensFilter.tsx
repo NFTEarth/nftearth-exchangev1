@@ -120,7 +120,7 @@ const MobileTokensFilter: FC<Props> = ({
               className="overflow-hidden"
             >
               <Accordion.Header className="flex w-full items-center justify-between border-b-[1px] border-gray-300 dark:border-neutral-600">
-                <Accordion.Trigger className="flex max-h-[64px] w-full items-center justify-between p-5 transition hover:bg-primary-100 dark:hover:bg-primary-900">
+                <Accordion.Trigger className="flex max-h-[64px] w-full items-center justify-between p-5 transition hover:bg-primary-100 dark:hover:bg-primary-700">
                   <div className="flex flex-col items-start">
                     {attribute.key}
                     {router.query[`attributes[${attribute.key}]`] && (

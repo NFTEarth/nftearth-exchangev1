@@ -327,7 +327,7 @@ const UserOffersTable: FC<Props> = ({ modal, collectionIds }) => {
                         src={source.icon}
                       />
                     )}
-                    <span className="max-w-[200px] overflow-hidden text-ellipsis">
+                    <span className="max-w-[200px] overflow-hidden text-ellipsis text-primary-900 dark:text-primary-700">
                       {source.name}
                     </span>
                   </a>

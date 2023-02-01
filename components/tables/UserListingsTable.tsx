@@ -266,7 +266,7 @@ const UserListingsTableRow = ({
           {source.icon && (
             <img className="h-6 w-6" alt="Source Icon" src={source.icon} />
           )}
-          <span className="max-w-[200px] overflow-hidden text-ellipsis">
+          <span className="max-w-[200px] overflow-hidden text-primary-900 dark:text-primary-700 text-ellipsis">
             {source.name}
           </span>
         </a>
@@ -350,7 +350,7 @@ const UserListingsMobileRow = ({
               )}
             </div>
             <div>
-              <div className="reservoir-h6 max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap font-headings text-sm dark:text-white">
+              <div className="reservoir-h6 max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap font-headings text-sm  text-primary-900 dark:text-primary-100">
                 {name}
               </div>
               <div className="max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap text-xs text-neutral-600 dark:text-neutral-300">

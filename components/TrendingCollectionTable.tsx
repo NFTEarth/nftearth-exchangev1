@@ -58,7 +58,7 @@ const TrendingCollectionTable: FC<Props> = ({ fallback, alternate }) => {
               <th
                 key={item}
                 scope="col"
-                className="reservoir-subtitle px-6 py-3 text-left bg-primary-900 dark:text-black"
+                className="reservoir-subtitle px-6 py-3 text-left bg-primary-700 dark:text-black"
               >
                 {item}
               </th>
@@ -180,7 +180,7 @@ const TrendingCollectionTable: FC<Props> = ({ fallback, alternate }) => {
 
       {(FOOTER_ENABLED && !expanded && !alternate) && (
         <button
-          className="py-3 px-5 text-white flex mx-auto my-3 border border-[#D4D4D4] bg-white text-black dark:border-[#525252] dark:bg-black dark:text-white dark:ring-[#525252] dark:focus:ring-4"
+          className="py-3 px-5 text-primary-900 flex mx-auto my-3 border border-[#D4D4D4] bg-white dark:text-primary-900 dark:border-[#525252] dark:bg-black dark:ring-[#525252] dark:focus:ring-4"
           onClick={() => {
             setExpanded(true)
           }}
@@ -213,7 +213,7 @@ function processCollection(
 ) {
   const data = {
     contract: collection?.primaryContract,
-    id: collection?.id,
+    id: collection?.slug || collection?.id,
     image: collection?.image,
     name: collection?.name,
     days1: collection?.volume?.['1day'],

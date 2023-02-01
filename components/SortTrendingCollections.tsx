@@ -31,7 +31,7 @@ const SortTrendingCollections: FC = () => {
 
   return (
     <DropdownMenu.Root onOpenChange={setOpen}>
-      <DropdownMenu.Trigger className="py-3 px-5 text-white flex w-[228px] justify-between px-4 py-3 dark:border-neutral-600 dark:ring-primary-900 bg-primary-900 dark:focus:ring-4">
+      <DropdownMenu.Trigger className="py-3 px-5 text-white flex w-[228px] justify-between px-4 py-3 dark:border-neutral-600 dark:ring-primary-700 bg-primary-700 dark:focus:ring-4">
         <span className="reservoir-label-l dark:text-black">
           {sortSelection}
         </span>

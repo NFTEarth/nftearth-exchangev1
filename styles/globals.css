@@ -10,8 +10,12 @@
     @apply dark:text-black;
   }
 
-  .reservoir-body, .reservoir-subtitle, .reservoir-label-s,.btn-primary-fill {
+  .reservoir-body, .reservoir-subtitle, .reservoir-label-s {
     @apply dark:text-black;
+  }
+
+  .btn-primary-fill {
+    @apply text-black;
   }
 }
 

@@ -16,7 +16,6 @@ const FormatWEth: FC<Props> = ({
   maximumFractionDigits,
   logoWidth,
 }) => {
-  console.log('NEXT_PUBLIC_CHAIN_ID, ', CHAIN_ID);
   const address =
     CHAIN_ID !== undefined && CHAIN_ID in wethContracts
       ? wethContracts[+CHAIN_ID]
