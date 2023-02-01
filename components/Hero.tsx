@@ -1,5 +1,7 @@
-import { FC, useEffect, useState, ComponentProps, useRef } from 'react'
-import { FiChevronDown, FiMoreVertical, FiRefreshCcw } from 'react-icons/fi'
+import React, { FC, useEffect, useState, ComponentProps, useRef } from 'react'
+import { FiAlertCircle, FiChevronDown, FiMoreVertical, FiRefreshCcw } from 'react-icons/fi'
+import { BsPatchCheckFill } from 'react-icons/bs'
+import * as Tooltip from '@radix-ui/react-tooltip';
 import { paths } from '@nftearth/reservoir-sdk'
 import { BidModal, Trait } from '@nftearth/reservoir-kit-ui'
 import { useNetwork, useSigner } from 'wagmi'
@@ -128,6 +130,7 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
     banner: bannerImage as string,
     image: collection?.image as string,
     name: collection?.name,
+    verified: collection?.openseaVerificationStatus,
     description: description,
     shortDescription: description ? description.slice(0, 150) : description,
   }
@@ -203,6 +206,24 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
           />
           <h1 className="reservoir-h4 text-center text-black dark:text-white">
             {header.name}
+            {header.verified && (
+              <Tooltip.Provider>
+                <Tooltip.Root delayDuration={0}>
+                  <Tooltip.Trigger>
+                    <BsPatchCheckFill
+                      className={`h-5 w-5 ml-3 text-primary-700`}
+                    />
+                  </Tooltip.Trigger>
+                  <Tooltip.Content
+                    sideOffset={5}
+                    className="reservoir-body-2 z-[10000] w-[191px] rounded-2xl bg-neutral-800 py-3 px-4 text-center text-white dark:bg-neutral-100 dark:text-black"
+                  >
+                    <Tooltip.Arrow className="fill-neutral-800 dark:fill-neutral-100" />
+                    Collection is curated by NFT Earth Team.
+                  </Tooltip.Content>
+                </Tooltip.Root>
+              </Tooltip.Provider>
+            )}
           </h1>
           <HeroSocialLinks
             collection={collection}

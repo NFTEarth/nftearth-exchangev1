@@ -12,6 +12,7 @@ import { useRouter } from 'next/router'
 import setParams from 'lib/params'
 import debounce from 'lodash.debounce'
 import { FiSearch, FiXCircle } from 'react-icons/fi'
+import { BsPatchCheckFill } from 'react-icons/bs';
 import { paths } from '@nftearth/reservoir-sdk'
 
 export type SearchCollectionsAPISuccessResponse =
@@ -198,6 +199,9 @@ const SearchCollections: FC<Props> = ({
                         <span className="reservoir-subtitle ml-2 overflow-hidden text-ellipsis dark:text-white">
                           {collection?.name}
                         </span>
+                        {collection.openseaVerificationStatus && (
+                          <BsPatchCheckFill className="h-4 w-4 ml-2 text-primary-700" />
+                        )}
                       </a>
                     </Link>
                   ))}
