@@ -219,7 +219,7 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
                     className="reservoir-body-2 z-[10000] w-[191px] rounded-2xl bg-neutral-800 py-3 px-4 text-center text-white dark:bg-neutral-100 dark:text-black"
                   >
                     <Tooltip.Arrow className="fill-neutral-800 dark:fill-neutral-100" />
-                    Verified Collection
+                    NFTEarth Verified Collection
                   </Tooltip.Content>
                 </Tooltip.Root>
               </Tooltip.Provider>
