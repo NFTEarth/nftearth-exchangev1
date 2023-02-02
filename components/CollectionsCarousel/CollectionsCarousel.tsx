@@ -54,7 +54,7 @@ const CollectionsCarousel = ({ collections }: IProps) => {
       )
     : []
 
-  console.log('collections =>', collections)
+  // console.log('collections =>', collections)
 
   return (
     <div className={styles.container}>
@@ -85,8 +85,7 @@ const CollectionsCarousel = ({ collections }: IProps) => {
           {mappedCollections.map((collection: any, idx: number) => (
             <Link
               key={`${collection?.name}${idx}`}
-              href="#"
-              //{`/collections/${collection?.slug}`}
+              href={`/collections/${collection?.slug}`}
             >
               <div className={styles.card}>
                 <div className={styles.thumbnail}>

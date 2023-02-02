@@ -63,7 +63,7 @@ interface IProps {
 }
 
 const TrendingCollections = ({ data }: IProps) => {
-  console.log('trending collections =>', data)
+  //   console.log('trending collections =>', data)
   const { collections } = data
 
   return (

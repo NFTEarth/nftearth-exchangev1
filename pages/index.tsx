@@ -40,7 +40,7 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Home: NextPage<Props> = ({ fallback }) => {
   // const isSmallDevice = useMediaQuery('only screen and (max-width : 600px)')
-  console.log('fallback =>', fallback)
+  // console.log('fallback =>', fallback)
   const router = useRouter()
 
   useEffect(() => {
