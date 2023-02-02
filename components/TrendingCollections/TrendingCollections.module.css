@@ -18,7 +18,7 @@
 }
 
 .head {
-  @apply py-2 text-[12px] font-[800] opacity-60;
+  @apply py-2 text-[12px] font-[800] text-neutral-400;
 }
 
 .row {
@@ -26,7 +26,8 @@
 }
 
 .details {
-  @apply flex items-center gap-4;
+  @apply grid grid-flow-col items-center justify-start gap-4;
+  grid-template-columns: 16px repeat(2, auto);
 }
 
 .thumbnail {
@@ -51,8 +52,22 @@
 }
 
 .price,
+.volume {
+  @apply text-neutral-400;
+}
+
+.price span,
+.volume span {
+  @apply font-semibold text-white;
+}
+
+.price,
 .supply {
   @apply hidden lg:block;
+}
+
+.load__btn {
+  @apply mx-auto w-fit rounded-lg border border-neutral-400 px-4 py-2 transition hover:opacity-80;
 }
 
 @media (min-width: 1024px) {

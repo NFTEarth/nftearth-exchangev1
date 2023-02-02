@@ -1,4 +1,6 @@
 import { optimizeImage } from 'lib/optmizeImage'
+import Link from 'next/link'
+import { useState } from 'react'
 import styles from './TrendingCollections.module.css'
 
 // const dummyData = [
@@ -65,6 +67,7 @@ interface IProps {
 const TrendingCollections = ({ data }: IProps) => {
   //   console.log('trending collections =>', data)
   const { collections } = data
+  const [size, setSize] = useState(10)
 
   return (
     <div className={styles.container}>
@@ -75,8 +78,12 @@ const TrendingCollections = ({ data }: IProps) => {
           <div className={styles.volume}>VOLUME</div>
           <div className={styles.supply}>SUPPLY</div>
         </div>
-        {collections?.slice(0, 9)?.map((collection: any, idx: number) => (
-          <div key={collection?.id} className={styles.row}>
+        {collections?.slice(0, size)?.map((collection: any, idx: number) => (
+          <Link
+            href={`/collections/${collection?.slug}`}
+            key={collection?.id}
+            className={styles.row}
+          >
             <div className={styles.details}>
               <div className={styles.index}>{idx + 1}</div>
               <div className={styles.thumbnail}>
@@ -88,15 +95,22 @@ const TrendingCollections = ({ data }: IProps) => {
               <div className={styles.name}>{collection?.name}</div>
             </div>
             <div className={styles.price}>
-              {collection?.floorSale?.['1day']} ETH
+              {collection?.floorSale?.['1day']}&nbsp;<span>ETH</span>
             </div>
             <div className={styles.volume}>
-              {collection?.volume?.['1day']} ETH
+              {collection?.volume?.['1day']}&nbsp;<span>ETH</span>
             </div>
             <div className={styles.supply}>{collection?.volume?.['7day']}</div>
-          </div>
+          </Link>
         ))}
       </div>
+      <button
+        type="button"
+        className={styles.load__btn}
+        onClick={() => setSize((v) => v + 10)}
+      >
+        Load More
+      </button>
     </div>
   )
 }
