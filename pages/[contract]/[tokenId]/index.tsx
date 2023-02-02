@@ -143,7 +143,7 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
       : token?.token?.owner?.toLowerCase() === account?.address?.toLowerCase()
 
   return (
-    <Layout navbar={{}}>
+    <Layout>
       <Head>
         {title}
         {description}
