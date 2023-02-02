@@ -1,6 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import NavbarLogo from 'components/Navbar/Navbar'
+// import NavbarLogo from 'components/Navbar/Navbar'
 import Link from 'next/link'
 import { FC, useState } from 'react'
 import { FiMenu } from 'react-icons/fi'
@@ -46,7 +46,7 @@ const HamburgerMenu: FC<Props> = ({ externalLinks }) => {
         }}
       >
         <div className="flex items-center justify-between gap-3 border-b border-neutral-300 px-6 py-4 dark:border-neutral-600">
-          <NavbarLogo variant="desktop" />
+          {/* <NavbarLogo variant="desktop" /> */}
           <Dialog.Close className="flex py-3 px-5 py-1.5 px-[5px] text-white dark:text-white">
             <HiX className="h-6 w-6" />
           </Dialog.Close>

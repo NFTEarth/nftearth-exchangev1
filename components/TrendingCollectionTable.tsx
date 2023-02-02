@@ -100,7 +100,7 @@ const TrendingCollectionTable: FC<Props> = ({ fallback, alternate }) => {
                   (FOOTER_ENABLED && !expanded && index == 9)
                     ? ''
                     : 'border-b'
-                } group h-[88px] border-neutral-300 bg-white dark:border-neutral-600 dark:border-neutral-600 dark:bg-black dark:text-white`}
+                } group h-[88px] border-neutral-300 bg-white dark:border-neutral-600 dark:bg-black dark:text-white`}
               >
                 {/* COLLECTION */}
                 <td className="reservoir-body flex items-center gap-4 whitespace-nowrap px-6 py-4 dark:text-white">
