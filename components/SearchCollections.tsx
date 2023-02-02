@@ -261,9 +261,6 @@ const SearchCollections: FC<Props> = ({
                     <span className="reservoir-subtitle ml-2 overflow-hidden text-ellipsis dark:text-white">
                       {collection?.name}
                     </span>
-                    {collection.openseaVerificationStatus && (
-                      <BsPatchCheckFill className="h-4 w-4 ml-2 text-primary-700" />
-                    )}
                   </a>
                 </Link>
               ))}

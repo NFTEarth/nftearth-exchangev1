@@ -26,6 +26,16 @@ const MyDocument = function () {
   return (
     <Html className={DARK_MODE ? 'dark' : ''}>
       <Head />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossOrigin="anonymous"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+      ></link>
       {/* Must  */}
       <meta charSet="utf-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -99,10 +109,10 @@ const MyDocument = function () {
         <meta />
       )}
 
-      <body className="bg-white text-neutral-800 dark:bg-black dark:text-white">
+      <>
         <Main />
         <NextScript />
-      </body>
+      </>
     </Html>
   )
 }

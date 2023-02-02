@@ -9,8 +9,7 @@ import Footer from 'components/Footer'
 import { useMediaQuery } from '@react-hookz/web'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import CustomCollectionsGrid from '../components/CustomCollectionsGrid'
-import Link from 'next/link'
+import ExploreTable from '../components/ExploreTable'
 
 // Environment variables
 // For more information about these variables
@@ -19,8 +18,6 @@ import Link from 'next/link'
 // REQUIRED
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
 const RESERVOIR_API_BASE = process.env.NEXT_PUBLIC_RESERVOIR_API_BASE
-const SIMPLEHASH_API_BASE = process.env.NEXT_PUBLIC_SIMPLEHASH_API_BASE;
-const SIMPLEHASH_API_KEY = process.env.NEXT_PUBLIC_SIMPLEHASH_API_KEY;
 
 // OPTIONAL
 const RESERVOIR_API_KEY = process.env.NEXT_PUBLIC_RESERVOIR_API_KEY
@@ -28,13 +25,14 @@ const REDIRECT_HOMEPAGE = process.env.NEXT_PUBLIC_REDIRECT_HOMEPAGE
 const META_TITLE = process.env.NEXT_PUBLIC_META_TITLE
 const META_DESCRIPTION = process.env.NEXT_PUBLIC_META_DESCRIPTION
 const META_IMAGE = process.env.NEXT_PUBLIC_META_OG_IMAGE
+const TAGLINE = process.env.NEXT_PUBLIC_TAGLINE
 const COLLECTION = process.env.NEXT_PUBLIC_COLLECTION
 const COMMUNITY = process.env.NEXT_PUBLIC_COMMUNITY
 const COLLECTION_SET_ID = process.env.NEXT_PUBLIC_COLLECTION_SET_ID
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
-const Home: NextPage<Props> = ({ fallback }) => {
+const Explore: NextPage<Props> = ({ fallback }) => {
   const isSmallDevice = useMediaQuery('only screen and (max-width : 600px)')
   const router = useRouter()
 
@@ -54,39 +52,26 @@ const Home: NextPage<Props> = ({ fallback }) => {
   if (REDIRECT_HOMEPAGE && COLLECTION) return null
 
   return (
-    <Layout navbar={{}}>
+    <Layout>
       <Head>
-        <Head>
-          <title>{META_TITLE}</title>
-          <meta name="description" content={META_DESCRIPTION} />
-          <meta name="twitter:image" content={META_IMAGE} />
-          <meta name="og:image" content={META_IMAGE} />
-        </Head>
+        <title>{META_TITLE}</title>
+        <meta name="description" content={META_DESCRIPTION} />
+        <meta name="twitter:image" content={META_IMAGE} />
+        <meta name="og:image" content={META_IMAGE} />
       </Head>
-      <div className="col-span-full px-6 md:px-16 mb-[50px] main">
+      <header className="col-span-full mb-12 mt-[66px] px-4 md:mt-40 lg:px-0">
+        <h1 className="reservoir-h1 text-center dark:text-white">
+          {TAGLINE || 'Discover, buy and sell NFTs'}
+        </h1>
+      </header>
+      <div className="col-span-full px-6 md:px-16">
         <div className="mb-9 flex w-full items-center justify-between">
-          <div className="hero-home">
-            <Link href="/stats" legacyBehavior={true}>
-              <a
-                className="py-4 px-6 dark:text-white text-black gap-1 rounded-full border-transparent bg-gray-100 normal-case focus:ring-0 dark:border-neutral-600 dark:bg-neutral-900 dark:ring-primary-900 dark:focus:ring-4"
-              >
-                <strong>Discover</strong>
-              </a>
-            </Link>
-          </div>
-        </div>
-        <div className="mb-9 flex w-full items-center justify-between mt-[60px]">
-          <div className="reservoir-h4 text-white">
-            Top Collections
-          </div>
-        </div>
-        <CustomCollectionsGrid collections={fallback.topCollections} />
-        <div className="mb-9 flex w-full items-center justify-between">
-          <div className="reservoir-h4 text-white">
+          <div className="reservoir-h4 dark:text-white">
             Trending Collections
           </div>
           {!isSmallDevice && <SortTrendingCollections />}
         </div>
+        <ExploreTable mappedAttributes={[]} viewRef={() => {}} />
         <TrendingCollectionTable fallback={fallback} />
       </div>
       <Footer />
@@ -94,11 +79,10 @@ const Home: NextPage<Props> = ({ fallback }) => {
   )
 }
 
-export default Home
+export default Explore
 
 export const getStaticProps: GetStaticProps<{
   fallback: {
-    topCollections: any,
     collections: paths['/collections/v5']['get']['responses']['200']['schema']
   }
 }> = async () => {
@@ -110,36 +94,26 @@ export const getStaticProps: GetStaticProps<{
     }
   }
 
-  const collectionsSetId = "b8411093a868a4e19d8603e6539352953977a81cf2bf401a60ff807248f601d0";
-
   const url = new URL('/collections/v5', RESERVOIR_API_BASE)
 
   let query: paths['/collections/v5']['get']['parameters']['query'] = {
-    sortBy: '1DayVolume',
-    collectionsSetId,
-    normalizeRoyalties: true,
-  }
-
-  const url2 = new URL('/collections/v5', RESERVOIR_API_BASE)
-
-  let query2: paths['/collections/v5']['get']['parameters']['query'] = {
     limit: 20,
     sortBy: '1DayVolume',
     normalizeRoyalties: true,
   }
 
-  const href = setParams(url, query)
-  const href2 = setParams(url2, query2)
-  const res = await fetch(href, options)
-  const res2 = await fetch(href2, options)
+  if (COLLECTION && !COMMUNITY) query.contract = [COLLECTION]
+  if (COMMUNITY) query.community = COMMUNITY
+  if (COLLECTION_SET_ID) query.collectionsSetId = COLLECTION_SET_ID
 
-  const topCollections = (await res.json()) as Props['fallback']['topCollections']
-  const collections = (await res2.json()) as Props['fallback']['collections']
+  const href = setParams(url, query)
+  const res = await fetch(href, options)
+
+  const collections = (await res.json()) as Props['fallback']['collections']
 
   return {
     props: {
       fallback: {
-        topCollections,
         collections,
       },
     },

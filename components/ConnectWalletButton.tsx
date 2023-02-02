@@ -1,10 +1,11 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { FC, ReactElement } from 'react'
+import { ReactNode } from 'react-markdown/lib/react-markdown'
 import { useAccount } from 'wagmi'
 
 type Props = {
   className?: HTMLButtonElement['className']
-  children: ReactElement
+  children: ReactElement | ReactNode
 }
 
 const ConnectWalletButton: FC<Props> = ({ className = '', children }) => {
@@ -32,7 +33,7 @@ const ConnectWalletButton: FC<Props> = ({ className = '', children }) => {
                 <button
                   onClick={openConnectModal}
                   type="button"
-                  className={`btn-primary-fill h-full min-h-[42px] border-none px-3 dark:border-neutral-600 dark:text-black dark:ring-primary-900 dark:focus:ring-4 ${className}`}
+                  data-action="connect"
                 >
                   {children}
                 </button>

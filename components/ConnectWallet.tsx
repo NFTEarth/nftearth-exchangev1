@@ -14,6 +14,7 @@ import ConnectWalletButton from 'components/ConnectWalletButton'
 import useMounted from 'hooks/useMounted'
 import useENSResolver from '../hooks/useENSResolver'
 import Avatar from './Avatar'
+// import { FaWallet } from 'react-icons/fa'
 
 const DARK_MODE = process.env.NEXT_PUBLIC_DARK_MODE
 const DISABLE_POWERED_BY_RESERVOIR =
@@ -26,9 +27,9 @@ const ConnectWallet: FC = () => {
     avatar: ensAvatar,
     shortAddress,
     shortName: shortEnsName,
-  } = useENSResolver(account?.address);
+  } = useENSResolver(account?.address)
   const { connectors } = useConnect({ chainId: +CHAIN_ID })
-  const { disconnect } = useDisconnect( )
+  const { disconnect } = useDisconnect()
   const wallet = connectors[0]
   const isMounted = useMounted()
 
@@ -37,15 +38,11 @@ const ConnectWallet: FC = () => {
   }
 
   if (!account.isConnected)
-    return (
-      <ConnectWalletButton>
-        <img src="/icons/wallet.svg" alt="Wallet Icon" />
-      </ConnectWalletButton>
-    )
+    return <ConnectWalletButton>{'Connect Wallet'}</ConnectWalletButton>
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger className="btn-primary-outline ml-auto rounded-full border-transparent p-0 normal-case dark:border-neutral-600 dark:bg-neutral-900 dark:ring-primary-900 dark:focus:ring-4">
+      <DropdownMenu.Trigger className="ml-auto rounded-full border-transparent p-0 normal-case outline dark:bg-neutral-900">
         <Avatar address={account.address} avatar={ensAvatar} size={40} />
       </DropdownMenu.Trigger>
 
@@ -55,20 +52,24 @@ const ConnectWallet: FC = () => {
             DISABLE_POWERED_BY_RESERVOIR ? 'rounded' : 'rounded-t'
           }`}
         >
-          <div className="group flex w-full items-center justify-between rounded px-4 py-3 outline-none transition">
+          <div className="group flex w-full cursor-pointer items-center justify-between rounded px-4 py-3 outline-none transition hover:bg-neutral-100 focus:bg-neutral-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
             {shortEnsName ? (
               <span>{shortEnsName}</span>
             ) : (
               <span>{shortAddress}</span>
             )}
           </div>
-          <div className="group flex w-full items-center justify-between rounded px-4 py-3 outline-none transition">
+          <div className="group flex w-full cursor-pointer items-center justify-between rounded px-4 py-3 outline-none transition hover:bg-neutral-100 focus:bg-neutral-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
             <span>Balance </span>
             <span>
               {account.address && <Balance address={account.address} />}
             </span>
           </div>
-          <Link href={`/address/${account.address}`} legacyBehavior={true} passHref>
+          <Link
+            href={`/address/${account.address}`}
+            legacyBehavior={true}
+            passHref
+          >
             <DropdownMenu.Item asChild>
               <a className="group flex w-full cursor-pointer items-center justify-between rounded px-4 py-3 outline-none transition hover:bg-neutral-100 focus:bg-neutral-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
                 Portfolio
@@ -76,21 +77,26 @@ const ConnectWallet: FC = () => {
             </DropdownMenu.Item>
           </Link>
           <DropdownMenu.Item asChild>
-            <button
+            <div
+              tabIndex={0}
               key={wallet.id}
               onClick={() => {
                 disconnect()
               }}
-              className="group flex w-full cursor-pointer items-center justify-between gap-3 rounded px-4 py-3 outline-none transition hover:bg-neutral-100 focus:bg-neutral-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+              className="group flex w-full cursor-pointer items-center justify-between rounded px-4 py-3 outline-none transition hover:bg-neutral-100 focus:bg-neutral-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
             >
               <span>Disconnect</span>
               <HiOutlineLogout className="h-6 w-7" />
-            </button>
+            </div>
           </DropdownMenu.Item>
         </div>
-        {!DISABLE_POWERED_BY_RESERVOIR && (
+        {/* {!DISABLE_POWERED_BY_RESERVOIR && (
           <div className="group mx-auto flex w-full cursor-pointer items-center justify-center gap-3 rounded-b-2xl bg-neutral-100  py-4 px-4 outline-none  transition dark:bg-neutral-800 ">
-            <Link href="https://reservoirprotocol.github.io/" legacyBehavior={true} passHref>
+            <Link
+              href="https://reservoirprotocol.github.io/"
+              legacyBehavior={true}
+              passHref
+            >
               <a
                 className="reservoir-tiny flex gap-2 dark:text-white"
                 target="_blank"
@@ -106,7 +112,7 @@ const ConnectWallet: FC = () => {
               </a>
             </Link>
           </div>
-        )}
+        )} */}
       </DropdownMenu.Content>
     </DropdownMenu.Root>
   )
@@ -120,8 +126,8 @@ type Props = {
 
 export const Balance: FC<Props> = ({ address }) => {
   const { data: balance } = useBalance({
-      chainId: +CHAIN_ID,
-      address: address as Address
-    })
+    chainId: +CHAIN_ID,
+    address: address as Address,
+  })
   return <FormatNativeCrypto amount={balance?.value} />
 }
