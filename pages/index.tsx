@@ -39,7 +39,7 @@ const COLLECTION_SET_ID = process.env.NEXT_PUBLIC_COLLECTION_SET_ID
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Home: NextPage<Props> = ({ fallback }) => {
-  const isSmallDevice = useMediaQuery('only screen and (max-width : 600px)')
+  // const isSmallDevice = useMediaQuery('only screen and (max-width : 600px)')
   const router = useRouter()
 
   useEffect(() => {

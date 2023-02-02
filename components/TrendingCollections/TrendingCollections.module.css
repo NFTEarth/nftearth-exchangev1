@@ -39,7 +39,7 @@
 }
 
 .name {
-  @apply break-all;
+  @apply break-all text-sm md:text-base;
 }
 
 .index {

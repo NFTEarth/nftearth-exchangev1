@@ -42,18 +42,23 @@ const dummyData = [
 
 const CollectionsCarousel = () => {
   return (
-    <div className={styles.grid}>
-      {dummyData.map((d, i) => (
-        <Link key={i} href="/">
-          <div className={styles.card}>
-            <div className={styles.thumbnail}></div>
-            <div className={styles.details}>
-              <div className={styles.name}>{d.name}</div>
-              <div className={styles.price}>Floor: {d.price} ETH</div>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <div className={styles.heading}>Top Collections</div>
+      </div>
+      <div className={styles.grid}>
+        {dummyData.map((d, i) => (
+          <Link key={i} href="/">
+            <div className={styles.card}>
+              <div className={styles.thumbnail}></div>
+              <div className={styles.details}>
+                <div className={styles.name}>{d.name}</div>
+                <div className={styles.price}>Floor: {d.price} ETH</div>
+              </div>
             </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }

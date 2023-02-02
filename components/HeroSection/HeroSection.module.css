@@ -1,5 +1,5 @@
 .container {
-  @apply mx-auto w-[90%] max-w-[1200px] py-10;
+  @apply mx-auto w-[90%] max-w-[1400px] py-10;
 }
 
 .board {
