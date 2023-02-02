@@ -1,5 +1,5 @@
 .navbar {
-  @apply sticky top-0 left-0 z-50 w-full;
+  @apply sticky top-0 left-0 z-50 w-full bg-neutral-900;
 }
 
 .container {
