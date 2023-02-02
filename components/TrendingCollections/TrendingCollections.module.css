@@ -1,0 +1,59 @@
+.container {
+  @apply grid gap-3;
+}
+
+.table {
+  @apply py-6;
+}
+
+.head,
+.row {
+  @apply grid items-center px-2;
+  grid-template-columns: 1fr 100px;
+}
+
+.row > div:not(:first-child),
+.head > div:not(:first-child) {
+  @apply text-end;
+}
+
+.head {
+  @apply py-2 text-[12px] font-[800] opacity-60;
+}
+
+.row {
+  @apply rounded-lg py-2 px-2 transition hover:bg-neutral-800 md:px-4;
+}
+
+.details {
+  @apply flex items-center gap-4;
+}
+
+.thumbnail {
+  @apply h-[48px] min-w-[48px] rounded-xl bg-neutral-500 lg:h-[64px] lg:w-[64px];
+}
+
+.name,
+.index {
+  @apply font-semibold;
+}
+
+.name {
+  @apply break-all;
+}
+
+.index {
+  @apply text-[18px] opacity-60;
+}
+
+.price,
+.supply {
+  @apply hidden lg:block;
+}
+
+@media (min-width: 1024px) {
+  .head,
+  .row {
+    grid-template-columns: 1fr repeat(3, 100px);
+  }
+}

@@ -14,6 +14,7 @@ import Link from 'next/link'
 import Navbar from 'components/Navbar'
 import HeroSection from 'components/HeroSection'
 import CollectionsCarousel from 'components/CollectionsCarousel'
+import CollectionsTable from 'components/CollectionsTable'
 
 // Environment variables
 // For more information about these variables
@@ -68,6 +69,7 @@ const Home: NextPage<Props> = ({ fallback }) => {
       </Head>
       <HeroSection />
       <CollectionsCarousel />
+      <CollectionsTable />
       {/* <Navbar /> */}
       {/* <div className="main col-span-full mb-[50px] px-6 md:px-16">
         <div className="mb-9 flex w-full items-center justify-between">
