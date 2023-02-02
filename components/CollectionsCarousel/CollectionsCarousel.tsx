@@ -1,4 +1,5 @@
-import Image from 'next/image'
+import { optimizeImage } from 'lib/optmizeImage'
+// import Image from 'next/image'
 import Link from 'next/link'
 import styles from './CollectionsCarousel.module.css'
 
@@ -84,11 +85,15 @@ const CollectionsCarousel = ({ collections }: IProps) => {
           {mappedCollections.map((collection: any, idx: number) => (
             <Link
               key={`${collection?.name}${idx}`}
-              href={`/collections/${collection?.slug}`}
+              href="#"
+              //{`/collections/${collection?.slug}`}
             >
               <div className={styles.card}>
                 <div className={styles.thumbnail}>
-                  {/* <Image src={collection?.image} alt="image" /> */}
+                  <img
+                    src={optimizeImage(collection?.image, 80)}
+                    alt="collection image"
+                  />
                 </div>
                 <div className={styles.details}>
                   <div className={styles.name}>{collection?.name}</div>
