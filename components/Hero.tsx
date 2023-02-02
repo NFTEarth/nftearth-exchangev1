@@ -152,9 +152,9 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
   const refreshCollection = async function (collectionId: string | undefined) {
     function handleError(message?: string) {
       setToast({
-        kind: 'error',
+        kind: 'info',
         message: message || 'Request to refresh collection was rejected.',
-        title: 'Refresh collection failed',
+        title: 'Refresh already in queue',
       })
     }
 
