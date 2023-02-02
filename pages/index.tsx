@@ -40,6 +40,7 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Home: NextPage<Props> = ({ fallback }) => {
   // const isSmallDevice = useMediaQuery('only screen and (max-width : 600px)')
+  console.log('fallback =>', fallback)
   const router = useRouter()
 
   useEffect(() => {
@@ -68,7 +69,7 @@ const Home: NextPage<Props> = ({ fallback }) => {
         </Head>
       </Head>
       <HeroSection />
-      <CollectionsCarousel />
+      <CollectionsCarousel collections={fallback.topCollections} />
       <CollectionsTable />
       {/* <Navbar /> */}
       {/* <div className="main col-span-full mb-[50px] px-6 md:px-16">
