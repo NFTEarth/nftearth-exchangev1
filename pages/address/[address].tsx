@@ -6,10 +6,7 @@ import {
   NextPage,
 } from 'next'
 import { useRouter } from 'next/router'
-import {
-  useAccount,
-  useNetwork,
-} from 'wagmi'
+import { useAccount, useNetwork } from 'wagmi'
 import * as Tabs from '@radix-ui/react-tabs'
 import { toggleOnItem } from 'lib/router'
 import UserOffersTable from 'components/tables/UserOffersTable'
@@ -53,7 +50,7 @@ const Address: NextPage<Props> = ({ address, fallback }) => {
     avatar: ensAvatar,
     shortAddress,
     shortName: shortEnsName,
-  } = useENSResolver(address);
+  } = useENSResolver(address)
   const { chain: activeChain } = useNetwork()
   const collections = useSearchCommunity()
   let collectionIds: undefined | string[] = undefined
@@ -102,7 +99,7 @@ const Address: NextPage<Props> = ({ address, fallback }) => {
   tabs.push({ name: 'Activity', id: 'activity' })
 
   return (
-    <Layout navbar={{}}>
+    <Layout>
       <Head>
         <title>{metadata.title(`${address} Profile`)}</title>
       </Head>

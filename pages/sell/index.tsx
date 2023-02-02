@@ -15,7 +15,7 @@ const Sell: NextPage = () => {
   ) => toast.custom((t) => <Toast t={t} toast={toast} data={data} />)
 
   return (
-    <Layout navbar={{}}>
+    <Layout>
       <div className="item-center col-span-full mx-auto flex w-screen max-w-[1500px] flex-col px-4 py-8 sm:px-12 md:py-16">
         {isConnected ? (
           <>

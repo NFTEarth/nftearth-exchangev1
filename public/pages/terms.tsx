@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Layout from '../components/Layout'
-import Footer from '../components/Footer'
+import Layout from 'components/Layout'
+import Footer from 'components/Footer'
 
 const META_TITLE = process.env.NEXT_PUBLIC_META_TITLE
 const META_DESCRIPTION = process.env.NEXT_PUBLIC_META_DESCRIPTION
@@ -8,19 +8,21 @@ const META_IMAGE = process.env.NEXT_PUBLIC_META_OG_IMAGE
 
 const Terms = () => {
   return (
-    <Layout navbar={{}}>
+    <Layout>
       <Head>
         <title>{META_TITLE}</title>
         <meta name="description" content={META_DESCRIPTION} />
         <meta name="twitter:image" content={META_IMAGE} />
         <meta name="og:image" content={META_IMAGE} />
       </Head>
-      <header className='col-span-full mb-12 mt-[66px] px-4 mx-9'>
-        <h1 className='reservoir-h1 dark:text-white'>Terms of Use</h1>
-        <strong className='dark:text-white mx-3'>Last updated on January 15, 2023</strong>
+      <header className="col-span-full mx-9 mb-12 mt-[66px] px-4">
+        <h1 className="reservoir-h1 dark:text-white">Terms of Use</h1>
+        <strong className="mx-3 dark:text-white">
+          Last updated on January 15, 2023
+        </strong>
       </header>
-      <div className='col-span-full px-6 md:px-16 mb-10'>
-        <div className='mb-9 flex w-full flex-col justify-between'>
+      <div className="col-span-full mb-10 px-6 md:px-16">
+        <div className="mb-9 flex w-full flex-col justify-between">
           <p>
             {`These Terms of Service govern your use of the website located at nftearth.exchange any related services provided by Layer2DAO., doing business as NFTEarth (“NFTEarth,“ “we,“ “us,“ or “our“).`}
           </p>
