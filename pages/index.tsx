@@ -110,7 +110,7 @@ export const getStaticProps: GetStaticProps<{
     }
   }
 
-  const collectionsSetId = "f6eff166c8536189c31b52c20ce2d425871e6a57f7f5bc7ac7b5d8d362ba9633";
+  const collectionsSetId = "b8411093a868a4e19d8603e6539352953977a81cf2bf401a60ff807248f601d0";
 
   const url = new URL('/collections/v5', RESERVOIR_API_BASE)
 
