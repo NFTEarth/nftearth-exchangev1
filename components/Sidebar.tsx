@@ -27,7 +27,7 @@ const Sidebar: FC<Props> = ({ attributes, refreshData, scrollToTop }) => {
       <div className="border-b-[1px] border-gray-300 px-6 py-5 text-left text-lg font-semibold transition dark:border-neutral-600 dark:text-white">
         Filters
       </div>
-      {attributes?.map((attribute) => (
+      {attributes?.filter(t => t.kind !== 'number' && t.key !== 'birthday').map((attribute) => (
         <Accordion.Item
           value={`item-${attribute.key}`}
           key={attribute.key}

@@ -67,7 +67,7 @@ const AttributeSelector: FC<Props> = ({
           debounceTimeout={300}
           onChange={(e) => setQuery(e.target.value)}
         />
-        {typeof query === 'string' && query !== '' && (
+        {query !== '' && (
           <button onClick={() => setQuery('')}>
             <FiXCircle className="absolute top-1/2 right-3 z-20 h-4 w-4 -translate-y-1/2 text-[#9CA3AF]" />
           </button>
