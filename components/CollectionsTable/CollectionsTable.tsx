@@ -3,7 +3,11 @@ import Link from 'next/link'
 import { useState } from 'react'
 import styles from './CollectionsTable.module.css'
 
-const CollectionsTable = () => {
+interface IProps {
+  collections: any
+}
+
+const CollectionsTable = ({ collections }: IProps) => {
   const [collectionsType, setCollectionsType] = useState<'TR' | 'TP'>('TR')
   return (
     <section>
@@ -23,7 +27,7 @@ const CollectionsTable = () => {
           </button> */}
           <Link href="#">View all</Link>
         </div>
-        <TrendingCollections />
+        <TrendingCollections data={collections} />
       </div>
     </section>
   )

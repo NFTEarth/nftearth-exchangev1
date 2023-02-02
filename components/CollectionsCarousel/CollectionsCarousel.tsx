@@ -92,7 +92,9 @@ const CollectionsCarousel = ({ collections }: IProps) => {
                 </div>
                 <div className={styles.details}>
                   <div className={styles.name}>{collection?.name}</div>
-                  <div className={styles.price}>Floor: {idx * 0.5} ETH</div>
+                  <div className={styles.price}>
+                    Floor: {idx + 0.38 * 0.5} ETH
+                  </div>
                 </div>
               </div>
             </Link>

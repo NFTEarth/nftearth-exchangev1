@@ -69,8 +69,8 @@ const Home: NextPage<Props> = ({ fallback }) => {
         </Head>
       </Head>
       <HeroSection />
-      <CollectionsCarousel collections={fallback.topCollections} />
-      <CollectionsTable />
+      <CollectionsCarousel collections={fallback.collections} />
+      <CollectionsTable collections={fallback.collections} />
       {/* <Navbar /> */}
       {/* <div className="main col-span-full mb-[50px] px-6 md:px-16">
         <div className="mb-9 flex w-full items-center justify-between">

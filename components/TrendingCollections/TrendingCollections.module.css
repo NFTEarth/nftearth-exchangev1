@@ -9,7 +9,7 @@
 .head,
 .row {
   @apply grid items-center px-2;
-  grid-template-columns: 1fr 100px;
+  grid-template-columns: 1fr 150px;
 }
 
 .row > div:not(:first-child),
@@ -22,7 +22,7 @@
 }
 
 .row {
-  @apply rounded-lg py-2 px-2 transition hover:bg-neutral-800 md:px-4;
+  @apply rounded-lg py-3 px-2 transition hover:bg-neutral-800 md:py-4 md:px-4;
 }
 
 .details {
@@ -30,7 +30,11 @@
 }
 
 .thumbnail {
-  @apply h-[48px] min-w-[48px] rounded-xl bg-neutral-500 lg:h-[64px] lg:w-[64px];
+  @apply relative h-[48px] min-w-[48px] overflow-hidden rounded-xl bg-neutral-500 lg:h-[64px] lg:w-[64px];
+}
+
+.thumbnail img {
+  @apply absolute top-0 left-0 h-full w-full;
 }
 
 .name,
@@ -54,6 +58,6 @@
 @media (min-width: 1024px) {
   .head,
   .row {
-    grid-template-columns: 1fr repeat(3, 100px);
+    grid-template-columns: 1fr repeat(3, 200px);
   }
 }
