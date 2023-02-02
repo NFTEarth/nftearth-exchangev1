@@ -1,0 +1,49 @@
+.grid {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  overflow: auto;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.grid::-webkit-scrollbar {
+  width: 0;
+}
+
+.card {
+  position: relative;
+  height: 360px;
+  min-width: 320px;
+  border-radius: 24px;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
+  -ms-border-radius: 24px;
+  -o-border-radius: 24px;
+  overflow: hidden;
+}
+
+.thumbnail {
+  @apply bg-neutral-700;
+  width: 100%;
+  height: 100%;
+}
+
+.details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 24px 20px;
+}
+
+.details .name {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    padding-left: 64px;
+  }
+}
