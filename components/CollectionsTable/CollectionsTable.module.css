@@ -1,0 +1,28 @@
+.container {
+  @apply mx-auto w-[90%] max-w-[1400px] py-10;
+}
+
+.header {
+  @apply flex items-center border-b-2 border-b-neutral-700;
+}
+
+.header button {
+  @apply relative inline-flex items-center p-4 text-[24px] font-semibold opacity-60;
+}
+
+.header button[data-active='true'] {
+  @apply opacity-100;
+}
+
+.header button::after {
+  content: '';
+  @apply absolute bottom-[-2px] left-0 h-[2px] w-full bg-transparent;
+}
+
+.header button[data-active='true']::after {
+  @apply bg-current;
+}
+
+.header a {
+  @apply ml-auto inline-flex items-center rounded-lg border border-neutral-500 py-2 px-3 text-sm font-semibold transition hover:opacity-70;
+}

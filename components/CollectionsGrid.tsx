@@ -65,7 +65,7 @@ const CollectionsGrid: FC<Props> = ({ collections }) => {
                 <a className="group mb-6 block transform-gpu overflow-hidden rounded-[16px] border border-[#D4D4D4] bg-white p-3 transition ease-in hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-lg hover:ease-out dark:border-0 dark:bg-neutral-800 dark:ring-1 dark:ring-neutral-600">
                   <ImagesGrid
                     sample_images={collection?.sampleImages}
-                    verified={collection?.openseaVerificationStatus}
+                    value={collection?.name || ''}
                   />
                   <div className="mt-3 flex items-center gap-2">
                     {collection?.image ? (

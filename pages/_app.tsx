@@ -96,7 +96,7 @@ function AppWrapper(props: AppProps & { baseUrl: string }) {
     <ThemeProvider
       attribute="class"
       defaultTheme={defaultTheme}
-      forcedTheme={!THEME_SWITCHING_ENABLED ? defaultTheme : undefined}
+      forcedTheme={'dark'}
     >
       <App {...props} />
     </ThemeProvider>
@@ -134,7 +134,7 @@ const App: FC<AppProps & { baseUrl: string }> = ({
           primaryColor: primaryColorPalette['700'],
           primaryHoverColor: primaryColorPalette['900'],
           buttonTextColor: '#000',
-          buttonTextHoverColor: '#a10aff'
+          buttonTextHoverColor: '#a10aff',
         })
       )
       setRainbowKitTheme(
@@ -150,7 +150,7 @@ const App: FC<AppProps & { baseUrl: string }> = ({
           primaryColor: primaryColorPalette['700'],
           primaryHoverColor: primaryColorPalette['900'],
           buttonTextColor: '#000',
-          buttonTextHoverColor: '#a10aff'
+          buttonTextHoverColor: '#a10aff',
         })
       )
       setRainbowKitTheme(
@@ -192,10 +192,12 @@ const App: FC<AppProps & { baseUrl: string }> = ({
             modalSize="compact"
           >
             <AnalyticsProvider>
-              <>
-                <Component {...pageProps} />
-                <div className="static-info">Important: Full syncronization of blockchain data for collections is ongoing, and NFT Collections may not reflect real-time data.</div>
-              </>
+              <Component {...pageProps} />
+              {/* <div className="static-info">
+                  Important: Full syncronization of blockchain data for
+                  collections is ongoing, and NFT Collections may not reflect
+                  real-time data.
+                </div> */}
             </AnalyticsProvider>
           </RainbowKitProvider>
         </WagmiConfig>

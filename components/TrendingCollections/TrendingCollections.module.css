@@ -1,0 +1,78 @@
+.container {
+  @apply grid gap-3;
+}
+
+.table {
+  @apply py-6;
+}
+
+.head,
+.row {
+  @apply grid items-center px-2;
+  grid-template-columns: 1fr 150px;
+}
+
+.row > div:not(:first-child),
+.head > div:not(:first-child) {
+  @apply text-end;
+}
+
+.head {
+  @apply py-2 text-[12px] font-[800] text-neutral-400;
+}
+
+.row {
+  @apply rounded-lg py-3 px-2 transition hover:bg-neutral-800 md:py-4 md:px-4;
+}
+
+.details {
+  @apply grid grid-flow-col items-center justify-start gap-4;
+  grid-template-columns: 16px repeat(2, auto);
+}
+
+.thumbnail {
+  @apply relative h-[48px] min-w-[48px] overflow-hidden rounded-xl bg-neutral-500 lg:h-[64px] lg:w-[64px];
+}
+
+.thumbnail img {
+  @apply absolute top-0 left-0 h-full w-full;
+}
+
+.name,
+.index {
+  @apply font-semibold;
+}
+
+.name {
+  @apply break-all text-sm md:text-base;
+}
+
+.index {
+  @apply text-[18px] opacity-60;
+}
+
+.price,
+.volume {
+  @apply text-neutral-400;
+}
+
+.price span,
+.volume span {
+  @apply font-semibold text-white;
+}
+
+.price,
+.supply {
+  @apply hidden lg:block;
+}
+
+.load__btn {
+  @apply mx-auto w-fit rounded-lg border border-neutral-400 px-4 py-2 transition hover:opacity-80;
+}
+
+@media (min-width: 1024px) {
+  .head,
+  .row {
+    grid-template-columns: 1fr repeat(3, 200px);
+  }
+}

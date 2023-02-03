@@ -1,0 +1,27 @@
+.container {
+  @apply mx-auto w-[90%] max-w-[1400px] py-10;
+}
+
+.board {
+  @apply grid w-full rounded-3xl bg-neutral-800 py-10 px-6  lg:grid-cols-2 lg:p-24;
+}
+
+.box {
+  @apply flex flex-grow flex-col justify-center gap-8 text-[18px] text-neutral-400;
+  line-height: 1.5;
+}
+
+.box h1 {
+  @apply text-4xl font-[900] text-neutral-100 md:text-6xl;
+  line-height: 1.2;
+}
+
+.box a {
+  @apply flex w-full min-w-[280px] items-center justify-center rounded-full bg-neutral-100 py-2 font-semibold text-neutral-600 transition hover:opacity-80 md:py-4 lg:w-fit;
+}
+
+@media (min-width: 768px) {
+  .board {
+    @apply grid-cols-2 p-20;
+  }
+}

@@ -96,13 +96,26 @@ const Home: NextPage<Props> = ({ fallback, id }) => {
   ]
 
   return (
-    <Layout navbar={{}}>
+    <Layout>
       <>
         <Head>
           <title>{metaTitle ? metaTitle : collection?.name}</title>
-          <meta name="description" content={metaDescription ? metaDescription : collection?.description as string} />
-          <meta name="twitter:image" content={metaImage ? metaImage : bannerImage} />
-          <meta property="og:image" content={metaImage ? metaImage : bannerImage} />
+          <meta
+            name="description"
+            content={
+              metaDescription
+                ? metaDescription
+                : (collection?.description as string)
+            }
+          />
+          <meta
+            name="twitter:image"
+            content={metaImage ? metaImage : bannerImage}
+          />
+          <meta
+            property="og:image"
+            content={metaImage ? metaImage : bannerImage}
+          />
         </Head>
         <Hero collectionId={id} fallback={fallback} />
         <Tabs.Root
@@ -290,7 +303,7 @@ export const getStaticProps: GetStaticProps<{
 
   let collectionQuery: paths['/collections/v5']['get']['parameters']['query'] =
     {
-      ...(/^0x/.test(id || '') ? { id } : { slug: id}),
+      ...(/^0x/.test(id || '') ? { id } : { slug: id }),
       includeTopBid: true,
       normalizeRoyalties: true,
     }
@@ -301,7 +314,7 @@ export const getStaticProps: GetStaticProps<{
 
   const collection =
     (await collectionRes.json()) as Props['fallback']['collection']
-  const newId = collection?.collections?.[0]?.id;
+  const newId = collection?.collections?.[0]?.id
 
   // TOKENS
   const tokensUrl = new URL(`${RESERVOIR_API_BASE}/tokens/v5`)

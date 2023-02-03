@@ -1,20 +1,21 @@
 import { paths } from '@nftearth/reservoir-sdk'
 import { optimizeImage } from 'lib/optmizeImage'
 import React, { FC } from 'react'
-import { BsPatchCheckFill } from 'react-icons/bs'
 
 type Props = {
   sample_images: NonNullable<
     paths['/collections/{collection}/attributes/explore/v3']['get']['responses']['200']['schema']['attributes']
   >[0]['sampleImages']
-  verified: string | undefined | null
+  value: NonNullable<
+    paths['/collections/{collection}/attributes/explore/v3']['get']['responses']['200']['schema']['attributes']
+  >[0]['value']
 }
 
-const ImagesGrid: FC<Props> = ({ sample_images, verified }) => {
+const ImagesGrid: FC<Props> = ({ sample_images, value }) => {
   return (
     <>
       {!!sample_images && sample_images.length > 0 ? (
-        <div className="grid grid-cols-[1fr_1fr_25%] items-center gap-1.5 relative">
+        <div className="grid grid-cols-[1fr_1fr_25%] items-center gap-1.5">
           {sample_images.length > 1 ? (
             // SMALLER IMAGE, HAS SIDE IMAGES
             <img
@@ -39,16 +40,6 @@ const ImagesGrid: FC<Props> = ({ sample_images, verified }) => {
                 />
               ))}
             </div>
-          )}
-          {verified && (
-            <BsPatchCheckFill
-              className={`h-8 w-8 text-primary-700`}
-              style={{
-                position: 'absolute',
-                top: 15,
-                left: 15
-              }}
-            />
           )}
         </div>
       ) : (

@@ -15,11 +15,11 @@ const Sell: NextPage = () => {
   ) => toast.custom((t) => <Toast t={t} toast={toast} data={data} />)
 
   return (
-    <Layout navbar={{}}>
+    <Layout>
       <div className="item-center col-span-full mx-auto flex w-screen max-w-[1500px] flex-col px-4 py-8 sm:px-12 md:py-16">
         {isConnected ? (
           <>
-            <h1 className="mb-11 text-[32px] font-semibold">Sell your NFTs</h1>
+            <h1 className="mb-11 text-[32px] font-semibold">Sell you NFTs</h1>
             <SellTable
               isOwner={false}
               address={address}

@@ -52,7 +52,7 @@ const Explore: NextPage<Props> = ({ fallback }) => {
   if (REDIRECT_HOMEPAGE && COLLECTION) return null
 
   return (
-    <Layout navbar={{}}>
+    <Layout>
       <Head>
         <title>{META_TITLE}</title>
         <meta name="description" content={META_DESCRIPTION} />
@@ -60,7 +60,9 @@ const Explore: NextPage<Props> = ({ fallback }) => {
         <meta name="og:image" content={META_IMAGE} />
       </Head>
       <header className="col-span-full mb-12 mt-[66px] px-4 md:mt-40 lg:px-0">
-        <h1 className="reservoir-h1 text-center dark:text-white">{TAGLINE || 'Discover, buy and sell NFTs'}</h1>
+        <h1 className="reservoir-h1 text-center dark:text-white">
+          {TAGLINE || 'Discover, buy and sell NFTs'}
+        </h1>
       </header>
       <div className="col-span-full px-6 md:px-16">
         <div className="mb-9 flex w-full items-center justify-between">
@@ -69,7 +71,7 @@ const Explore: NextPage<Props> = ({ fallback }) => {
           </div>
           {!isSmallDevice && <SortTrendingCollections />}
         </div>
-        <ExploreTable  mappedAttributes={[]} viewRef={() => {}}/>
+        <ExploreTable mappedAttributes={[]} viewRef={() => {}} />
         <TrendingCollectionTable fallback={fallback} />
       </div>
       <Footer />

@@ -1,0 +1,49 @@
+.container {
+  @apply py-10;
+}
+
+.header {
+  @apply mx-auto mb-8 w-[90%] max-w-[1400px];
+}
+
+.heading {
+  @apply text-[24px] font-[600];
+}
+
+.grid {
+  @apply mx-auto flex items-center gap-6 overflow-x-auto px-5 md:pl-16;
+}
+
+.grid::-webkit-scrollbar {
+  width: 0;
+}
+
+.card {
+  @apply relative h-[360px] min-w-[320px] overflow-hidden rounded-3xl;
+}
+
+.thumbnail {
+  @apply z-[-1] h-full w-full bg-neutral-700;
+}
+
+.thumbnail img,
+.thumbnail::after {
+  @apply pointer-events-none absolute top-0 left-0 h-full w-full;
+}
+
+.thumbnail::after {
+  content: '';
+  background-image: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.1)
+  );
+}
+
+.details {
+  @apply absolute bottom-0 left-0 z-[1] w-full py-6 px-5;
+}
+
+.details .name {
+  @apply text-[20px] font-semibold text-white;
+}

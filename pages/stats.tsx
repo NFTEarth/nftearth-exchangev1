@@ -51,14 +51,14 @@ const Stats: NextPage<Props> = ({ fallback }) => {
   if (REDIRECT_HOMEPAGE && COLLECTION) return null
 
   return (
-    <Layout navbar={{}}>
+    <Layout>
       <Head>
         <title>{META_TITLE}</title>
         <meta name="description" content={META_DESCRIPTION} />
         <meta name="twitter:image" content={META_IMAGE} />
         <meta name="og:image" content={META_IMAGE} />
       </Head>
-      <div className="col-span-full px-6 md:px-16 mt-10">
+      <div className="col-span-full mt-10 px-6 md:px-16">
         <div className="mb-9 flex w-full items-center justify-between">
           <div className="reservoir-h4 dark:text-white">
             Trending Collections

@@ -1,15 +1,11 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import NavbarLogo from 'components/navbar/NavbarLogo'
+// import NavbarLogo from 'components/Navbar/Navbar'
 import Link from 'next/link'
 import { FC, useState } from 'react'
 import { FiMenu } from 'react-icons/fi'
 import { HiOutlineLogout, HiX } from 'react-icons/hi'
-import {
-  useAccount,
-  useConnect,
-  useDisconnect,
-} from 'wagmi'
+import { useAccount, useConnect, useDisconnect } from 'wagmi'
 import { Balance } from './ConnectWallet'
 import EthAccount from './EthAccount'
 import ThemeSwitcher from './ThemeSwitcher'
@@ -33,7 +29,7 @@ const HamburgerMenu: FC<Props> = ({ externalLinks }) => {
     avatar: ensAvatar,
     shortAddress,
     shortName: shortEnsName,
-  } = useENSResolver(accountData.address);
+  } = useENSResolver(accountData.address)
   const wallet = connectors[0]
 
   const hasExternalLinks = externalLinks.length > 0
@@ -50,8 +46,8 @@ const HamburgerMenu: FC<Props> = ({ externalLinks }) => {
         }}
       >
         <div className="flex items-center justify-between gap-3 border-b border-neutral-300 px-6 py-4 dark:border-neutral-600">
-          <NavbarLogo variant="desktop" />
-          <Dialog.Close className="py-3 px-5 text-white flex py-1.5 px-[5px] dark:text-white">
+          {/* <NavbarLogo variant="desktop" /> */}
+          <Dialog.Close className="flex py-1.5 px-[5px] text-white dark:text-white">
             <HiX className="h-6 w-6" />
           </Dialog.Close>
         </div>
@@ -95,7 +91,11 @@ const HamburgerMenu: FC<Props> = ({ externalLinks }) => {
               </div>
             )}
 
-            <Link href={`/address/${accountData.address}`} legacyBehavior={true} passHref>
+            <Link
+              href={`/address/${accountData.address}`}
+              legacyBehavior={true}
+              passHref
+            >
               <a
                 className="group flex w-full cursor-pointer items-center justify-between rounded border-b border-neutral-300 p-4 text-[#4B5563] outline-none transition hover:bg-neutral-100 hover:text-[#1F2937] focus:bg-neutral-100 dark:border-neutral-600 dark:text-white dark:hover:bg-neutral-600"
                 onClick={() => setOpen(false)}

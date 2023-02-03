@@ -10,14 +10,13 @@ import { PercentageChange } from './hero/HeroStats'
 import { useMediaQuery } from '@react-hookz/web'
 import { useState } from 'react'
 import { CgSpinner } from 'react-icons/cg'
-import { BsPatchCheckFill } from 'react-icons/bs'
 
 const FOOTER_ENABLED = process.env.NEXT_PUBLIC_FOOTER_ENABLED == 'true'
 
 type Props = {
   fallback: {
     collections: paths['/collections/v5']['get']['responses']['200']['schema']
-  },
+  }
   alternate?: boolean
 }
 
@@ -33,9 +32,9 @@ const TrendingCollectionTable: FC<Props> = ({ fallback, alternate }) => {
     fallback.collections
   )
 
-  const shouldInfiniteLoad = !alternate && (
-    !FOOTER_ENABLED || (FOOTER_ENABLED && expanded && collections.size < 5)
-  )
+  const shouldInfiniteLoad =
+    !alternate &&
+    (!FOOTER_ENABLED || (FOOTER_ENABLED && expanded && collections.size < 5))
 
   const { data } = collections
 
@@ -52,14 +51,14 @@ const TrendingCollectionTable: FC<Props> = ({ fallback, alternate }) => {
 
   return (
     <div className="mb-11 overflow-x-auto overflow-y-hidden">
-      <table className="mb-2 min-w-full table-auto rounded-[14px] overflow-hidden">
+      <table className="mb-2 min-w-full table-auto overflow-hidden rounded-[14px]">
         <thead>
           <tr>
             {columns.map((item) => (
               <th
                 key={item}
                 scope="col"
-                className="reservoir-subtitle px-6 py-3 text-left bg-primary-700 dark:text-black"
+                className="reservoir-subtitle bg-primary-700 px-6 py-3 text-left dark:text-black"
               >
                 {item}
               </th>
@@ -73,7 +72,6 @@ const TrendingCollectionTable: FC<Props> = ({ fallback, alternate }) => {
               tokenHref,
               image,
               name,
-              verified,
               days1,
               days30,
               days7,
@@ -102,7 +100,7 @@ const TrendingCollectionTable: FC<Props> = ({ fallback, alternate }) => {
                   (FOOTER_ENABLED && !expanded && index == 9)
                     ? ''
                     : 'border-b'
-                } group h-[88px] border-neutral-300 dark:border-neutral-600 dark:text-white bg-white dark:border-neutral-600 dark:bg-black`}
+                } group h-[88px] border-neutral-300 bg-white dark:border-neutral-600 dark:bg-black dark:text-white`}
               >
                 {/* COLLECTION */}
                 <td className="reservoir-body flex items-center gap-4 whitespace-nowrap px-6 py-4 dark:text-white">
@@ -112,8 +110,12 @@ const TrendingCollectionTable: FC<Props> = ({ fallback, alternate }) => {
                   <Link href={tokenHref} legacyBehavior={true} passHref>
                     <a className="flex items-center gap-2">
                       <img
-                        src={optimizeImage(image || 'https://via.placeholder.com/140', 140)}
+                        src={optimizeImage(
+                          image || 'https://via.placeholder.com/140',
+                          140
+                        )}
                         className="h-[56px] w-[56px] rounded-full object-cover"
+                        alt="image"
                       />
                       <div
                         className={`reservoir-h6 max-w-[80%] overflow-hidden truncate whitespace-nowrap dark:text-white ${
@@ -121,9 +123,6 @@ const TrendingCollectionTable: FC<Props> = ({ fallback, alternate }) => {
                         }`}
                       >
                         {name}
-                        {verified && (
-                          <BsPatchCheckFill className="h-4 w-4 ml-2 text-primary-700 inline" />
-                        )}
                       </div>
                     </a>
                   </Link>
@@ -179,13 +178,13 @@ const TrendingCollectionTable: FC<Props> = ({ fallback, alternate }) => {
         </tbody>
       </table>
 
-      {(FOOTER_ENABLED && expanded && collections.isValidating && !alternate) && (
+      {FOOTER_ENABLED && expanded && collections.isValidating && !alternate && (
         <CgSpinner className="mx-auto h-6 w-6 animate-spin" />
       )}
 
-      {(FOOTER_ENABLED && !expanded && !alternate) && (
+      {FOOTER_ENABLED && !expanded && !alternate && (
         <button
-          className="py-3 px-5 text-primary-900 flex mx-auto my-3 border border-[#D4D4D4] bg-white dark:text-primary-900 dark:border-[#525252] dark:bg-black dark:ring-[#525252] dark:focus:ring-4"
+          className="mx-auto my-3 flex border border-[#D4D4D4] bg-white py-3 px-5 text-primary-900 dark:border-[#525252] dark:bg-black dark:text-primary-900 dark:ring-[#525252] dark:focus:ring-4"
           onClick={() => {
             setExpanded(true)
           }}
@@ -196,9 +195,7 @@ const TrendingCollectionTable: FC<Props> = ({ fallback, alternate }) => {
 
       {alternate && (
         <Link href="/stats" legacyBehavior={true} passHref>
-          <a
-            className="py-3 px-5 text-white flex gap-1 rounded-full border-transparent bg-gray-100 w-[200px] normal-case focus:ring-0 dark:border-neutral-600 dark:bg-neutral-900 dark:ring-primary-900 dark:focus:ring-4"
-          >
+          <a className="flex w-[200px] gap-1 rounded-full border-transparent bg-gray-100 py-3 px-5 normal-case text-white focus:ring-0 dark:border-neutral-600 dark:bg-neutral-900 dark:ring-primary-900 dark:focus:ring-4">
             <strong>See More</strong>
           </a>
         </Link>
@@ -220,7 +217,6 @@ function processCollection(
     contract: collection?.primaryContract,
     id: collection?.slug || collection?.id,
     image: collection?.image,
-    verified: collection?.openseaVerificationStatus,
     name: collection?.name,
     days1: collection?.volume?.['1day'],
     days7: collection?.volume?.['7day'],
