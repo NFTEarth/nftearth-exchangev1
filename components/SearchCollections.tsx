@@ -89,7 +89,7 @@ const SearchCollections: FC<Props> = ({
       } catch (err) {
         console.error(err)
       }
-    }, 100),
+    }, 500),
     []
   )
 
