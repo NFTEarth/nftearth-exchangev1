@@ -17,7 +17,7 @@ const FormatCrypto: FC<Props> = ({
   address,
   logoWidth = 16,
 }) => {
-  const logoUrl = `/icons/currency/${address}.png`
+  const logoUrl = `/icons/currency/${address?.toLowerCase()}.png`
 
   return (
     <FormatCurrency
